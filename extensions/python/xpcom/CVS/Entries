@@ -1,0 +1,18 @@
+/.cvsignore/1.2.120.1/Wed Apr 10 02:41:51 2002//TMOZILLA_1_0_RELEASE
+/Makefile.in/1.1.6.1/Wed Apr 10 02:41:51 2002//TMOZILLA_1_0_RELEASE
+/__init__.py/1.2.120.1/Wed Apr 10 02:41:51 2002//TMOZILLA_1_0_RELEASE
+/components.py/1.10.2.2/Mon Apr 29 05:32:17 2002//TMOZILLA_1_0_RELEASE
+/file.py/1.5.52.2/Mon Apr 29 05:32:17 2002//TMOZILLA_1_0_RELEASE
+/makefile.stupid.linux/1.5.28.1/Wed Apr 10 02:41:51 2002//TMOZILLA_1_0_RELEASE
+/makefile.win/1.3.6.1/Wed Apr 10 02:41:51 2002//TMOZILLA_1_0_RELEASE
+/nsError.py/1.2.120.1/Wed Apr 10 02:41:51 2002//TMOZILLA_1_0_RELEASE
+/readme.html/1.3.90.2/Fri May  3 05:16:42 2002//TMOZILLA_1_0_RELEASE
+/register.py/1.2.120.1/Wed Apr 10 02:41:51 2002//TMOZILLA_1_0_RELEASE
+/xpcom_consts.py/1.2.120.2/Mon Apr 29 05:32:18 2002//TMOZILLA_1_0_RELEASE
+/xpt.py/1.3.90.2/Mon Apr 29 05:32:18 2002//TMOZILLA_1_0_RELEASE
+D/client////
+D/doc////
+D/server////
+D/src////
+D/test////
+D/tools////

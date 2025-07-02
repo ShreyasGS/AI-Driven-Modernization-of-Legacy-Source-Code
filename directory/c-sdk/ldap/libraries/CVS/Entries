@@ -1,0 +1,15 @@
+/.cvsignore/5.0.4.1/Wed Apr 10 02:32:20 2002//TMOZILLA_1_0_RELEASE
+/Makefile.client/5.0.4.1/Wed Apr 10 02:32:20 2002//TMOZILLA_1_0_RELEASE
+/Makefile.in/5.0.2.2.2.1/Wed Apr 10 02:32:20 2002//TMOZILLA_1_0_RELEASE
+/genMakefile.client/5.0.4.1/Wed Apr 10 02:32:20 2002//TMOZILLA_1_0_RELEASE
+/libldap.ex/5.0.4.1/Wed Apr 10 02:32:20 2002//TMOZILLA_1_0_RELEASE
+/libldap_ssl.ex/5.0.4.1/Wed Apr 10 02:32:20 2002//TMOZILLA_1_0_RELEASE
+D/libiutil////
+D/liblber////
+D/libldap////
+D/libldif////
+D/libprldap////
+D/libssldap////
+D/libutil////
+D/macintosh////
+D/msdos////

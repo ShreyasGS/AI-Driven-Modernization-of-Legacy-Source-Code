@@ -1,0 +1,38 @@
+/.cvsignore/1.1.196.1/Wed Apr 10 03:44:36 2002//TMOZILLA_1_0_RELEASE
+/MANIFEST/1.18.16.1/Wed Apr 10 03:44:37 2002//TMOZILLA_1_0_RELEASE
+/Makefile.in/1.24.16.1/Wed Apr 10 03:44:37 2002//TMOZILLA_1_0_RELEASE
+/about.dtd/1.2.92.1/Wed Apr 10 03:44:37 2002//TMOZILLA_1_0_RELEASE
+/about.html/1.13.2.6/Mon May 27 19:04:34 2002//TMOZILLA_1_0_RELEASE
+/accept2locale.properties/1.1.182.1/Wed Apr 10 03:44:37 2002//TMOZILLA_1_0_RELEASE
+/brand.dtd/1.5.8.5/Tue May 28 23:24:23 2002//TMOZILLA_1_0_RELEASE
+/brand.properties/1.14.52.1/Wed Apr 10 03:44:37 2002//TMOZILLA_1_0_RELEASE
+/builtinURLs.rdf/1.7.36.2/Mon Apr 15 23:50:16 2002//TMOZILLA_1_0_RELEASE
+/charsetDetectorsOverlay.dtd/1.1.196.1/Wed Apr 10 03:44:37 2002//TMOZILLA_1_0_RELEASE
+/charsetOverlay.dtd/1.14.16.1/Wed Apr 10 03:44:37 2002//TMOZILLA_1_0_RELEASE
+/commonDialog.dtd/1.1.196.1/Wed Apr 10 03:44:37 2002//TMOZILLA_1_0_RELEASE
+/commonDialogs.properties/1.4.2.1/Wed Apr 10 03:44:37 2002//TMOZILLA_1_0_RELEASE
+/config.dtd/1.2.36.1/Wed Apr 10 03:44:38 2002//TMOZILLA_1_0_RELEASE
+/contents-region.rdf/1.9.8.5/Tue May 28 23:24:23 2002//TMOZILLA_1_0_RELEASE
+/contents.rdf/1.8.8.5/Tue May 28 23:24:23 2002//TMOZILLA_1_0_RELEASE
+/dialog.properties/1.2.32.1/Wed Apr 10 03:44:38 2002//TMOZILLA_1_0_RELEASE
+/dialogOverlay.dtd/1.1.196.1/Wed Apr 10 03:44:38 2002//TMOZILLA_1_0_RELEASE
+/intl.css/1.2.182.1/Wed Apr 10 03:44:38 2002//TMOZILLA_1_0_RELEASE
+/keys.properties/1.3.16.1/Wed Apr 10 03:44:38 2002//TMOZILLA_1_0_RELEASE
+/languageNames.properties/1.10.6.1/Wed Apr 10 03:44:38 2002//TMOZILLA_1_0_RELEASE
+/makefile.win/1.22.16.1/Wed Apr 10 03:44:38 2002//TMOZILLA_1_0_RELEASE
+/nsTreeSorting.properties/1.1.66.1/Wed Apr 10 03:44:38 2002//TMOZILLA_1_0_RELEASE
+/plugins.properties/1.1.50.1/Wed Apr 10 03:44:38 2002//TMOZILLA_1_0_RELEASE
+/printProgress.dtd/1.2.10.1/Wed Apr 10 03:44:39 2002//TMOZILLA_1_0_RELEASE
+/printdialog.dtd/1.2.16.1/Wed Apr 10 03:44:39 2002//TMOZILLA_1_0_RELEASE
+/region.dtd/1.7.8.7/Tue May 28 23:24:24 2002//TMOZILLA_1_0_RELEASE
+/region.properties/1.8.14.2/Tue May 21 21:07:17 2002//TMOZILLA_1_0_RELEASE
+/regionNames.properties/1.5.8.1/Wed Apr 10 03:44:39 2002//TMOZILLA_1_0_RELEASE
+/tabbrowser.dtd/1.4.16.1/Wed Apr 10 03:44:39 2002//TMOZILLA_1_0_RELEASE
+/tabbrowser.properties/1.2.2.1/Wed Apr 10 03:44:39 2002//TMOZILLA_1_0_RELEASE
+/textcontext.dtd/1.1.140.1/Wed Apr 10 03:44:39 2002//TMOZILLA_1_0_RELEASE
+/wizardManager.properties/1.2.168.1/Wed Apr 10 03:44:39 2002//TMOZILLA_1_0_RELEASE
+/wizardOverlay.dtd/1.1.196.1/Wed Apr 10 03:44:39 2002//TMOZILLA_1_0_RELEASE
+D/mac////
+D/os2////
+D/unix////
+D/win////

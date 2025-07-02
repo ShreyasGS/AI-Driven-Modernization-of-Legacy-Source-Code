@@ -1,0 +1,19 @@
+/Makefile/1.2.136.1/Wed Apr 10 03:10:04 2002//TMOZILLA_1_0_RELEASE
+/Makefile.win/1.2.136.1/Wed Apr 10 03:10:04 2002//TMOZILLA_1_0_RELEASE
+/list/1.1.180.1/Wed Apr 10 03:10:04 2002//TMOZILLA_1_0_RELEASE
+/test_cases_JNI.html/1.1.180.1/Wed Apr 10 03:10:05 2002//TMOZILLA_1_0_RELEASE
+D/AccessingFields////
+D/AccessingStaticFields////
+D/ArrayOperations////
+D/CallingInstanceMethods////
+D/CallingStaticMethods////
+D/ClassOperation////
+D/Exceptions////
+D/GlobalAndLocalRefs////
+D/JavaVMInterface////
+D/ObjectOperations////
+D/StringOperations////
+D/VersionInformation////
+D/getjni////
+D/include////
+D/java////

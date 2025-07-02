@@ -1,0 +1,14 @@
+/.cvsignore/1.1.196.1/Wed Apr 10 03:06:08 2002//TMOZILLA_1_0_RELEASE
+/Makefile.in/1.1.196.1/Wed Apr 10 03:06:08 2002//TMOZILLA_1_0_RELEASE
+/makefile.win/1.5.206.1/Wed Apr 10 03:06:09 2002//TMOZILLA_1_0_RELEASE
+/nsIImportABDescriptor.idl/1.3.36.1/Wed Apr 10 03:06:09 2002//TMOZILLA_1_0_RELEASE
+/nsIImportAddressBooks.idl/1.7.36.1/Wed Apr 10 03:06:09 2002//TMOZILLA_1_0_RELEASE
+/nsIImportFieldMap.idl/1.3.36.1/Wed Apr 10 03:06:09 2002//TMOZILLA_1_0_RELEASE
+/nsIImportGeneric.idl/1.8.36.1/Wed Apr 10 03:06:09 2002//TMOZILLA_1_0_RELEASE
+/nsIImportMail.idl/1.4.36.1/Wed Apr 10 03:06:09 2002//TMOZILLA_1_0_RELEASE
+/nsIImportMailboxDescriptor.idl/1.3.36.1/Wed Apr 10 03:06:09 2002//TMOZILLA_1_0_RELEASE
+/nsIImportMimeEncode.idl/1.4.36.1/Wed Apr 10 03:06:09 2002//TMOZILLA_1_0_RELEASE
+/nsIImportModule.idl/1.4.36.1/Wed Apr 10 03:06:09 2002//TMOZILLA_1_0_RELEASE
+/nsIImportService.idl/1.7.36.1/Wed Apr 10 03:06:09 2002//TMOZILLA_1_0_RELEASE
+/nsIImportSettings.idl/1.3.36.1/Wed Apr 10 03:06:09 2002//TMOZILLA_1_0_RELEASE
+D

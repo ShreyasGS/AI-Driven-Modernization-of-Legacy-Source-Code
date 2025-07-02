@@ -1,0 +1,19 @@
+/.cvsignore/1.1.278.1/Wed Apr 10 03:02:09 2002//TMOZILLA_1_0_RELEASE
+/Makefile.in/1.35.2.1/Wed Apr 10 03:02:09 2002//TMOZILLA_1_0_RELEASE
+/jar.mn/1.46.2.1/Wed Apr 10 03:02:09 2002//TMOZILLA_1_0_RELEASE
+/makefile.win/1.27.2.1/Wed Apr 10 03:02:09 2002//TMOZILLA_1_0_RELEASE
+/makefiles/1.70.2.1/Wed Apr 10 03:02:09 2002//TMOZILLA_1_0_RELEASE
+D/absync////
+D/addrbook////
+D/base////
+D/compose////
+D/db////
+D/extensions////
+D/imap////
+D/import////
+D/local////
+D/mapi////
+D/mime////
+D/movemail////
+D/news////
+D/public////

@@ -1,0 +1,37 @@
+/.cvsignore/1.1.182.1/Wed Apr 10 03:40:33 2002//TMOZILLA_1_0_RELEASE
+/MANIFEST/1.5.164.1/Wed Apr 10 03:40:33 2002//TMOZILLA_1_0_RELEASE
+/Makefile.in/1.17.14.2/Fri May 24 22:43:18 2002//TMOZILLA_1_0_RELEASE
+/askViewZoom.js/1.5.14.1/Wed Apr 10 03:40:33 2002//TMOZILLA_1_0_RELEASE
+/askViewZoom.xul/1.7.28.1/Wed Apr 10 03:40:33 2002//TMOZILLA_1_0_RELEASE
+/browserBindings.xul/1.7.20.1/Wed Apr 10 03:40:33 2002//TMOZILLA_1_0_RELEASE
+/builtinURLs.js/1.7.20.1/Wed Apr 10 03:40:33 2002//TMOZILLA_1_0_RELEASE
+/communicator.css/1.2.8.1/Wed Apr 10 03:40:33 2002//TMOZILLA_1_0_RELEASE
+/communicatorOverlay.xul/1.1.182.1/Wed Apr 10 03:40:33 2002//TMOZILLA_1_0_RELEASE
+/contentAreaClick.js/1.28.2.1/Wed Apr 10 03:40:33 2002//TMOZILLA_1_0_RELEASE
+/contentAreaContextOverlay.xul/1.37.2.1/Wed Apr 10 03:40:34 2002//TMOZILLA_1_0_RELEASE
+/contentAreaDD.js/1.31.2.1/Wed Apr 10 03:40:34 2002//TMOZILLA_1_0_RELEASE
+/contentAreaUtils.js/1.53.2.3/Mon May 13 22:09:12 2002//TMOZILLA_1_0_RELEASE
+/contents-platform.rdf/1.7.8.5/Tue May 28 23:22:25 2002//TMOZILLA_1_0_RELEASE
+/contents-region.rdf/1.7.8.5/Tue May 28 23:22:28 2002//TMOZILLA_1_0_RELEASE
+/contents.rdf/1.10.2.5/Tue May 28 23:22:28 2002//TMOZILLA_1_0_RELEASE
+/editorBindings.xul/1.6.114.1/Wed Apr 10 03:40:34 2002//TMOZILLA_1_0_RELEASE
+/findUtils.js/1.7.10.1/Wed Apr 10 03:40:34 2002//TMOZILLA_1_0_RELEASE
+/makefile.win/1.9.162.1/Wed Apr 10 03:40:34 2002//TMOZILLA_1_0_RELEASE
+/manifest.rdf/1.5.168.1/Wed Apr 10 03:40:35 2002//TMOZILLA_1_0_RELEASE
+/nsContextMenu.js/1.63.2.3/Wed May 22 05:02:43 2002//TMOZILLA_1_0_RELEASE
+/openLocation.js/1.15.10.1/Wed Apr 10 03:40:35 2002//TMOZILLA_1_0_RELEASE
+/openLocation.xul/1.21.16.1/Wed Apr 10 03:40:35 2002//TMOZILLA_1_0_RELEASE
+/printPageSetup.js/1.6.2.2/Sat May 18 01:32:43 2002//TMOZILLA_1_0_RELEASE
+/printPageSetup.xul/1.7.8.1/Wed Apr 10 03:40:35 2002//TMOZILLA_1_0_RELEASE
+/printPreviewBindings.xml/1.7.2.2/Sat May 18 01:32:43 2002//TMOZILLA_1_0_RELEASE
+/taskbarOverlay.xul/1.12.20.1/Wed Apr 10 03:40:35 2002//TMOZILLA_1_0_RELEASE
+/tasksOverlay.js/1.43.2.1/Wed Apr 10 03:40:35 2002//TMOZILLA_1_0_RELEASE
+/tasksOverlay.xul/1.55.2.1/Wed Apr 10 03:40:36 2002//TMOZILLA_1_0_RELEASE
+/utilityOverlay.js/1.63.2.3/Wed May 22 05:05:38 2002//TMOZILLA_1_0_RELEASE
+/utilityOverlay.xul/1.33.10.1/Wed Apr 10 03:40:36 2002//TMOZILLA_1_0_RELEASE
+/viewZoomOverlay.js/1.7.20.1/Wed Apr 10 03:40:36 2002//TMOZILLA_1_0_RELEASE
+/viewZoomOverlay.xul/1.8.20.1/Wed Apr 10 03:40:36 2002//TMOZILLA_1_0_RELEASE
+D/mac////
+D/os2////
+D/unix////
+D/win////

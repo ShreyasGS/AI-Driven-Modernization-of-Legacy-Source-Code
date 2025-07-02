@@ -1,0 +1,12 @@
+/.cvsignore/5.1.4.1/Wed Apr 10 02:31:52 2002//TMOZILLA_1_0_RELEASE
+/Makefile.in/5.0.2.1.2.1/Wed Apr 10 02:31:52 2002//TMOZILLA_1_0_RELEASE
+/README.configure/5.0.4.1/Wed Apr 10 02:31:52 2002//TMOZILLA_1_0_RELEASE
+/aclocal.m4/5.0.4.1/Wed Apr 10 02:31:52 2002//TMOZILLA_1_0_RELEASE
+/build.mk/5.0.2.4.2.2/Fri May 17 07:02:53 2002//TMOZILLA_1_0_RELEASE
+/component_versions.mk/5.0.4.1/Wed Apr 10 02:31:52 2002//TMOZILLA_1_0_RELEASE
+/configure/5.0.2.10.2.1/Wed Apr 10 02:31:53 2002//TMOZILLA_1_0_RELEASE
+/configure.in/5.0.2.5.2.1/Wed Apr 10 02:31:54 2002//TMOZILLA_1_0_RELEASE
+/gmakefile.win/5.0.4.1/Wed Apr 10 02:31:54 2002//TMOZILLA_1_0_RELEASE
+/package.mk/5.0.4.1/Wed Apr 10 02:31:54 2002//TMOZILLA_1_0_RELEASE
+D/config////
+D/ldap////

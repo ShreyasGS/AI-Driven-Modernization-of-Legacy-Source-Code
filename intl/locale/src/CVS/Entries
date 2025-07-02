@@ -1,0 +1,20 @@
+/.cvsignore/1.2.268.1/Wed Apr 10 02:48:45 2002//TMOZILLA_1_0_RELEASE
+/Makefile.in/1.28.10.2/Fri May 24 22:42:28 2002//TMOZILLA_1_0_RELEASE
+/langGroups.properties/1.2.116.1/Wed Apr 10 02:48:45 2002//TMOZILLA_1_0_RELEASE
+/language.properties/1.11.6.1/Wed Apr 10 02:48:45 2002//TMOZILLA_1_0_RELEASE
+/makefile.win/1.25.10.1/Wed Apr 10 02:48:45 2002//TMOZILLA_1_0_RELEASE
+/nsCollation.cpp/1.31.10.1/Wed Apr 10 02:48:45 2002//TMOZILLA_1_0_RELEASE
+/nsCollation.h/1.12.18.1/Wed Apr 10 02:48:46 2002//TMOZILLA_1_0_RELEASE
+/nsFontPackageService.cpp/1.8.8.1/Wed Apr 10 02:48:46 2002//TMOZILLA_1_0_RELEASE
+/nsFontPackageService.h/1.5.10.1/Wed Apr 10 02:48:46 2002//TMOZILLA_1_0_RELEASE
+/nsLanguageAtomService.cpp/1.17.2.1/Wed Apr 10 02:48:46 2002//TMOZILLA_1_0_RELEASE
+/nsLanguageAtomService.h/1.7.36.2/Thu May 16 23:56:30 2002//TMOZILLA_1_0_RELEASE
+/nsLocale.cpp/1.21.36.1/Wed Apr 10 02:48:46 2002//TMOZILLA_1_0_RELEASE
+/nsLocale.h/1.12.36.1/Wed Apr 10 02:48:46 2002//TMOZILLA_1_0_RELEASE
+/nsLocaleService.cpp/1.42.16.2/Thu May 16 23:56:30 2002//TMOZILLA_1_0_RELEASE
+/nsScriptableDateFormat.cpp/1.19.14.1/Wed Apr 10 02:48:46 2002//TMOZILLA_1_0_RELEASE
+/win32.order/1.4.108.1/Wed Apr 10 02:48:46 2002//TMOZILLA_1_0_RELEASE
+D/mac////
+D/os2////
+D/unix////
+D/windows////

@@ -1,0 +1,20 @@
+/.cvsignore/1.1.276.1/Wed Apr 10 03:34:40 2002//TMOZILLA_1_0_RELEASE
+/Makefile.in/1.27.14.1/Wed Apr 10 03:34:40 2002//TMOZILLA_1_0_RELEASE
+/makefile.win/3.9.50.1/Wed Apr 10 03:34:40 2002//TMOZILLA_1_0_RELEASE
+D/beos////
+D/build////
+D/cocoa////
+D/gtk////
+D/gtk2////
+D/gtksuperwin////
+D/gtkxtbin////
+D/mac////
+D/os2////
+D/photon////
+D/qt////
+D/support////
+D/windows////
+D/xlib////
+D/xlibxtbin////
+D/xpwidgets////
+D/xremoteclient////

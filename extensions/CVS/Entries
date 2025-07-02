@@ -1,0 +1,25 @@
+/.cvsignore/1.1.256.1/Wed Apr 10 02:38:54 2002//TMOZILLA_1_0_RELEASE
+/Makefile.in/1.14.130.1/Wed Apr 10 02:38:54 2002//TMOZILLA_1_0_RELEASE
+/makefile.win/1.22.2.1/Wed Apr 10 02:38:54 2002//TMOZILLA_1_0_RELEASE
+D/access-builtin////
+D/content-packs////
+D/cookie////
+D/ctl////
+D/cview////
+D/help////
+D/inspector////
+D/interfaceinfo////
+D/irc////
+D/layout-debug////
+D/manticore////
+D/p3p////
+D/pics////
+D/pref////
+D/python////
+D/transformiix////
+D/universalchardet////
+D/venkman////
+D/wallet////
+D/xml-rpc////
+D/xmlextras////
+D/xmlterm////

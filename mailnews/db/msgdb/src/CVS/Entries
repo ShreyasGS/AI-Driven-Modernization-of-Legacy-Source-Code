@@ -1,0 +1,13 @@
+/.cvsignore/1.1.278.1/Wed Apr 10 03:04:52 2002//TMOZILLA_1_0_RELEASE
+/Makefile.in/1.30.36.1/Wed Apr 10 03:04:52 2002//TMOZILLA_1_0_RELEASE
+/makefile.win/1.24.22.1/Wed Apr 10 03:04:52 2002//TMOZILLA_1_0_RELEASE
+/nsDBFolderInfo.cpp/1.84.2.1/Wed Apr 10 03:04:52 2002//TMOZILLA_1_0_RELEASE
+/nsImapMailDatabase.cpp/1.33.2.1/Wed Apr 10 03:04:52 2002//TMOZILLA_1_0_RELEASE
+/nsMailDatabase.cpp/1.85.2.2/Mon Apr 15 04:01:50 2002//TMOZILLA_1_0_RELEASE
+/nsMsgDatabase.cpp/1.289.2.2/Tue May  7 14:53:11 2002//TMOZILLA_1_0_RELEASE
+/nsMsgHdr.cpp/1.100.14.1/Wed Apr 10 03:04:53 2002//TMOZILLA_1_0_RELEASE
+/nsMsgOfflineImapOperation.cpp/1.11.10.1/Wed Apr 10 03:04:53 2002//TMOZILLA_1_0_RELEASE
+/nsMsgOfflineImapOperation.h/1.3.36.1/Wed Apr 10 03:04:53 2002//TMOZILLA_1_0_RELEASE
+/nsMsgThread.cpp/1.59.22.1/Wed Apr 10 03:04:53 2002//TMOZILLA_1_0_RELEASE
+/nsNewsDatabase.cpp/1.56.22.1/Wed Apr 10 03:04:53 2002//TMOZILLA_1_0_RELEASE
+D

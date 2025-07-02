@@ -1,0 +1,9 @@
+/.cvsignore/1.1.176.1/Wed Apr 10 02:32:46 2002//TMOZILLA_1_0_RELEASE
+/Makefile.in/1.4.114.1/Wed Apr 10 02:32:46 2002//TMOZILLA_1_0_RELEASE
+/README.txt/1.6.172.1/Wed Apr 10 02:32:47 2002//TMOZILLA_1_0_RELEASE
+/TODO.txt/1.33.116.1/Wed Apr 10 02:32:47 2002//TMOZILLA_1_0_RELEASE
+/makefile.win/1.2.114.1/Wed Apr 10 02:32:47 2002//TMOZILLA_1_0_RELEASE
+D/base////
+D/datasource////
+D/macbuild////
+D/tests////

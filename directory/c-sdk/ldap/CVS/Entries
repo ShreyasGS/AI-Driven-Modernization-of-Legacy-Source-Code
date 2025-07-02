@@ -1,0 +1,9 @@
+/.cvsignore/5.0.4.1/Wed Apr 10 02:32:01 2002//TMOZILLA_1_0_RELEASE
+/Makefile.client/5.0.4.1/Wed Apr 10 02:32:01 2002//TMOZILLA_1_0_RELEASE
+/Makefile.in/5.0.2.1.2.1/Wed Apr 10 02:32:01 2002//TMOZILLA_1_0_RELEASE
+D/build////
+D/clients////
+D/docs////
+D/examples////
+D/include////
+D/libraries////

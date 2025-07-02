@@ -1,0 +1,17 @@
+/.cvsignore/1.2.190.1/Wed Apr 10 02:45:04 2002//TMOZILLA_1_0_RELEASE
+/INSTALL/1.8.182.1/Wed Apr 10 02:45:04 2002//TMOZILLA_1_0_RELEASE
+/Makefile.in/1.10.36.1/Wed Apr 10 02:45:04 2002//TMOZILLA_1_0_RELEASE
+/README/1.5.180.1/Wed Apr 10 02:45:04 2002//TMOZILLA_1_0_RELEASE
+/UUID.txt/1.4.36.1/Wed Apr 10 02:45:04 2002//TMOZILLA_1_0_RELEASE
+/jar.mn/1.6.16.1/Wed Apr 10 02:45:04 2002//TMOZILLA_1_0_RELEASE
+D/base////
+D/build////
+D/config////
+D/distrib////
+D/doc////
+D/geckoterm////
+D/lineterm////
+D/linetest////
+D/scripts////
+D/tests////
+D/ui////

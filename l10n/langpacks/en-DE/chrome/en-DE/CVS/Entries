@@ -1,0 +1,11 @@
+/.cvsignore/1.1.1.1.168.1/Wed Apr 10 02:53:11 2002//TMOZILLA_1_0_RELEASE
+/MANIFEST/1.1.168.1/Wed Apr 10 02:53:11 2002//TMOZILLA_1_0_RELEASE
+/Makefile.in/1.1.1.1.168.1/Wed Apr 10 02:53:11 2002//TMOZILLA_1_0_RELEASE
+/makefile.win/1.1.1.1.168.1/Wed Apr 10 02:53:12 2002//TMOZILLA_1_0_RELEASE
+/manifest.rdf/1.1.1.1.168.1/Wed Apr 10 02:53:12 2002//TMOZILLA_1_0_RELEASE
+D/communicator////
+D/editor////
+D/global////
+D/messenger////
+D/navigator////
+D/necko////

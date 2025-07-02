@@ -1,0 +1,7 @@
+/.cvsignore/1.1.272.1/Wed Apr 10 02:34:07 2002//TMOZILLA_1_0_RELEASE
+/Makefile.in/1.6.96.1/Wed Apr 10 02:34:07 2002//TMOZILLA_1_0_RELEASE
+/makefile.win/3.18.96.1/Wed Apr 10 02:34:07 2002//TMOZILLA_1_0_RELEASE
+D/base////
+D/build////
+D/events////
+D/jsurl////

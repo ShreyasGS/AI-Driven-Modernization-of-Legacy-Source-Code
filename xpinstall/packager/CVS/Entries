@@ -1,0 +1,15 @@
+/.cvsignore/1.1.224.1/Wed Apr 10 03:44:55 2002//TMOZILLA_1_0_RELEASE
+/Makefile.in/1.28.2.1/Wed Apr 10 03:44:55 2002//TMOZILLA_1_0_RELEASE
+/Packager.pm/1.1.4.1/Wed Apr 10 03:44:56 2002//TMOZILLA_1_0_RELEASE
+/packages-mac/1.168.2.1/Wed Apr 10 03:44:56 2002//TMOZILLA_1_0_RELEASE
+/packages-static-unix/1.29.2.2/Fri May 17 02:10:08 2002//TMOZILLA_1_0_RELEASE
+/packages-static-win/1.33.2.2/Fri Apr 26 06:51:57 2002//TMOZILLA_1_0_RELEASE
+/packages-unix/1.209.2.5/Thu May  9 06:51:33 2002//TMOZILLA_1_0_RELEASE
+/packages-win/1.207.2.5/Mon May  6 22:09:22 2002//TMOZILLA_1_0_RELEASE
+/pkgcp.pl/1.20.2.1/Wed Apr 10 03:44:56 2002//TMOZILLA_1_0_RELEASE
+/xptlink.pl/1.4.162.1/Wed Apr 10 03:44:56 2002//TMOZILLA_1_0_RELEASE
+/xptzip.pl/1.1.162.1/Wed Apr 10 03:44:56 2002//TMOZILLA_1_0_RELEASE
+D/common////
+D/mac////
+D/unix////
+D/windows////

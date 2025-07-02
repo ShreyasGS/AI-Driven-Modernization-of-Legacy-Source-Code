@@ -1,0 +1,32 @@
+/.cvsignore/1.1.256.1/Wed Apr 10 03:40:55 2002//TMOZILLA_1_0_RELEASE
+/Makefile.in/1.36.2.2/Fri Apr 26 06:19:53 2002//TMOZILLA_1_0_RELEASE
+/jar.mn/1.54.2.1/Wed Apr 10 03:40:55 2002//TMOZILLA_1_0_RELEASE
+/makefile.win/1.37.2.2/Fri Apr 26 06:19:42 2002//TMOZILLA_1_0_RELEASE
+D/alerts////
+D/autocomplete////
+D/bookmarks////
+D/build////
+D/console////
+D/directory////
+D/download-manager////
+D/filepicker////
+D/find////
+D/history////
+D/intl////
+D/killAll////
+D/macbuild////
+D/prefwindow////
+D/regviewer////
+D/related////
+D/resetPref////
+D/search////
+D/shistory////
+D/sidebar////
+D/timebomb////
+D/ucth////
+D/updates////
+D/urlbarhistory////
+D/urlwidget////
+D/winhooks////
+D/xfer////
+D/xremote////
