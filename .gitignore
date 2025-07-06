@@ -1,0 +1,48 @@
+# Mozilla project .gitignore
+
+# Cursor editor files
+.cursor/
+
+# Build artifacts
+obj*/
+dist/
+*.o
+*.lo
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+*.obj
+*.lib
+
+# Compiled Python files
+*.py[cod]
+*$py.class
+__pycache__/
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# OS specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*~
+*.bak
+*.swp
+*.tmp
+
+# IDE specific files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace 
