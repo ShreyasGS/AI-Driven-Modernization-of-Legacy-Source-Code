@@ -69,6 +69,9 @@ The nsSelection.cpp file was identified as a high-priority target with 1,204 mod
 2. **Error Code Returns → Result Types**
    - [Result Type Implementation](modernized_nsSelection_Result.h)
    - [GetPresContext Implementation](modernized_nsSelection_GetPresContext.cpp)
+   - [AddItem Implementation](modernized_nsSelection_AddItem.cpp)
+   - [RemoveItem Implementation](modernized_nsSelection_RemoveItem.cpp)
+   - [Clear Implementation](modernized_nsSelection_Clear.cpp)
    - Created Result<T> type for returning values with error handling
 
 3. **C-style Casts → Safe Casts**
@@ -81,9 +84,30 @@ The nsSelection.cpp file was identified as a high-priority target with 1,204 mod
 
 5. **Null Checks → Optional Types**
    - [Optional Implementation](modernized_nsSelection_Optional.cpp)
+   - [FindItemIndex Implementation](modernized_nsSelection_RemoveItem.cpp)
    - Used std::optional for values that might not exist
 
 Each example includes backward compatibility wrappers to ensure existing code continues to work while new code can use the modernized interfaces.
+
+### Implementation Highlights
+
+1. **AddItem Modernization**
+   - Replaced nsresult return with Result<bool>
+   - Improved error handling with early returns
+   - Used getter_AddRefs instead of passing a pointer to result
+   - Replaced do_QueryInterface with direct QueryInterface call
+
+2. **RemoveItem Modernization**
+   - Replaced nsresult return with Result<bool>
+   - Created FindItemIndex method using std::optional
+   - Moved QueryInterface call outside the loop for better performance
+   - Added explicit check for RemoveElementAt failure
+
+3. **Clear Modernization**
+   - Replaced nsresult return with Result<void>
+   - Added null check for aPresContext before calling selectFrames
+   - Changed PR_TRUE to C++ standard true
+   - Added comments to clarify the code
 
 ## Next Steps
 
