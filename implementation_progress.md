@@ -18,12 +18,18 @@
   - Result types for error handling
   - Modern C++ features
   - Compatibility layer for gradual migration
+- Implemented a modernized version of nsLeafFrame (layout component) demonstrating:
+  - RAII patterns for resource management
+  - Namespace organization
+  - Safe type casting
+  - Return values instead of out parameters
+  - Concrete implementation example with SpaceFrame
 
 ## Current Status
 
 We are now working on a dual-track approach:
 1. Continuing analysis of core components (currently focused on Layout Engine)
-2. Implementing modernization patterns in actual code (starting with nsTextNode)
+2. Implementing modernization patterns in actual code (completed nsTextNode and nsLeafFrame)
 
 ## Next Steps
 
