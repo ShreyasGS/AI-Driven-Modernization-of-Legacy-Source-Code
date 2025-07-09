@@ -625,6 +625,16 @@ We've developed templates for the most common modernization patterns identified 
    - Addresses memory management issues (3,245 raw new occurrences)
    - Improves memory safety and reduces the risk of leaks
 
+3. **C-style Casts → Safe Casts**
+   - Replaces C-style casts with safer alternatives (static_cast, dynamic_cast)
+   - Addresses 5,098 occurrences found in our baseline
+   - Improves type safety and makes the intent of casts more explicit
+
+4. **Out Parameters → Return Values**
+   - Replaces out parameters with direct return values or structured returns
+   - Addresses 5,027 occurrences found in our baseline
+   - Makes APIs more intuitive and easier to use with modern C++ features
+
 ### Template Structure
 
 Each template includes:
