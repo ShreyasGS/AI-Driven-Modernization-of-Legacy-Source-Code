@@ -20,11 +20,9 @@ This directory contains templates for common modernization patterns identified i
    - Replaces out parameters with return values
    - Addresses 5,027 occurrences found in our baseline
 
-## Planned Templates
-
-5. Manual Reference Counting → RefPtr/nsCOMPtr
+5. [Manual Reference Counting → Smart Pointers](manual_refcount_to_smart_ptr.md)
    - Replaces manual AddRef/Release calls with smart pointers
-   - Will address 2,832 occurrences found in our baseline
+   - Addresses 2,832 occurrences found in our baseline
 
 ## How to Use These Templates
 
