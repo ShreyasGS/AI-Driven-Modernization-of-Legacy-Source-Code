@@ -1,0 +1,6 @@
+Module: layout
+  C++ files:      215
+  Header files:      243
+  C files:        0
+  IDL files:       16
+  Total lines of code:   245012 total

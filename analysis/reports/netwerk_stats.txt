@@ -1,0 +1,6 @@
+Module: netwerk
+  C++ files:      160
+  Header files:      130
+  C files:        0
+  IDL files:      103
+  Total lines of code:    91339 total

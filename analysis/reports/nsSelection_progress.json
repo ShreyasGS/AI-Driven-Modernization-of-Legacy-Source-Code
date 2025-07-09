@@ -1,0 +1,36 @@
+{
+  "timestamp": "2025-07-09T15:23:55.328194",
+  "original_file": "content/base/src/nsSelection.cpp",
+  "modernized_files": [
+    "./modernized_nsSelection_Clear.cpp",
+    "./modernized_nsSelection_GetRangeAt.cpp",
+    "./modernized_nsSelection_Optional.cpp",
+    "./modernized_nsSelection_GetAnchorNode.cpp",
+    "./modernized_nsSelection_CurrentItem.cpp",
+    "./modernized_nsSelection_RemoveItem.cpp",
+    "./modernized_nsSelection_AddItem.cpp",
+    "./modernized_nsSelection_GetPresContext.cpp"
+  ],
+  "total_methods": 112,
+  "modernized_methods": 7,
+  "method_progress_percentage": 6.25,
+  "original_patterns": {
+    "manual_reference_counting": 7,
+    "error_code_returns": 375,
+    "c_style_casts": 12,
+    "out_parameters": 86,
+    "null_checks": 3
+  },
+  "original_pattern_total": 483,
+  "modernized_patterns_total": 69,
+  "modernized_methods_list": [
+    "GetRangeAt",
+    "GetPresContext",
+    "GetAnchorNode",
+    "AddItem",
+    "RemoveItem",
+    "Clear",
+    "CurrentItem",
+    "FetchDesiredX"
+  ]
+}

@@ -1,0 +1,6 @@
+Module: js
+  C++ files:       55
+  Header files:       78
+  C files:      145
+  IDL files:       26
+  Total lines of code:   145182 total

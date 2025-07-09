@@ -1,0 +1,4 @@
+Error handling patterns:
+  Files with NS_SUCCEEDED:     1133
+  Files with NS_FAILED:     1270
+  Files with try/catch:       49

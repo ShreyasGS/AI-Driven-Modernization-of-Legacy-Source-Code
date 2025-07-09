@@ -1,0 +1,5 @@
+C++ files:     3959
+Header files:     4539
+C files:     1969
+IDL files:     1063
+Total directories:     2398

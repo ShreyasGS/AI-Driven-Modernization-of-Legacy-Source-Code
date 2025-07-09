@@ -1,0 +1,6 @@
+Module: dom
+  C++ files:       18
+  Header files:       53
+  C files:        0
+  IDL files:      224
+  Total lines of code:    25970 total

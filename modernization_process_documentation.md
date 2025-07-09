@@ -66,6 +66,8 @@ We selected nsSelection.cpp as our pilot file due to its high number of moderniz
 
 ## Phase 2: Developing Modernization Templates
 
+Modernization templates are structured guides that define how to transform specific outdated code patterns in the Mozilla 1.0 codebase into modern C++ equivalents. Each template addresses a common pattern identified during our codebase analysis and provides a systematic approach to modernizing that pattern.
+
 ### Step 1: Identifying Common Patterns
 
 We identified five key patterns that would benefit most from modernization:

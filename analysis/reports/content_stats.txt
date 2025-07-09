@@ -1,0 +1,6 @@
+Module: content
+  C++ files:      258
+  Header files:      258
+  C files:        0
+  IDL files:       22
+  Total lines of code:   251810 total

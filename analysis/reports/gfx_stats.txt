@@ -1,0 +1,6 @@
+Module: gfx
+  C++ files:      164
+  Header files:      215
+  C files:        8
+  IDL files:        9
+  Total lines of code:   183329 total

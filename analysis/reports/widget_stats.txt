@@ -1,0 +1,6 @@
+Module: widget
+  C++ files:      206
+  Header files:      254
+  C files:        9
+  IDL files:       30
+  Total lines of code:   140999 total

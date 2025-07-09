@@ -1,0 +1,29 @@
+{
+  "file_path": "content/base/src/nsSelection.cpp",
+  "file_size": 233143,
+  "patterns": {
+    "manual_reference_counting": 7,
+    "error_code_returns": 375,
+    "c_style_casts": 12,
+    "out_parameters": 86,
+    "null_checks": 3,
+    "result_type_usage": 0,
+    "smart_pointer_usage": 239,
+    "optional_type_usage": 0
+  },
+  "cyclomatic_complexity": 1047,
+  "function_length": {
+    "average": 23.532751091703055,
+    "min": 1,
+    "max": 260
+  },
+  "comment_ratio": 0.1517037037037037,
+  "documentation_metrics": {
+    "doc_files": 29,
+    "doc_lines": 5152,
+    "modernization_doc_files": 16,
+    "modernization_doc_lines": 2930,
+    "template_doc_files": 6,
+    "template_doc_lines": 1285
+  }
+}

@@ -1,0 +1,405 @@
+{
+  "timestamp": "2025-07-09 11:42:18",
+  "summary": {
+    "total_files": 404,
+    "total_components": 1
+  },
+  "patterns": {
+    "error_code_return": {
+      "count": 2022,
+      "regex": "\\breturn\\s+NS_(OK|ERROR)",
+      "description": "Error code return",
+      "modernization": "Use result types or exceptions"
+    },
+    "c_style_cast": {
+      "count": 1744,
+      "regex": "\\(\\s*(const\\s+)?\\w+(\\s*\\*+\\s*)+\\)\\s*\\w+",
+      "description": "C-style cast",
+      "modernization": "Use static_cast, dynamic_cast, or const_cast"
+    },
+    "null_check": {
+      "count": 1074,
+      "regex": "(if\\s*\\(\\s*(\\!|null\\s*\\!=)\\s*\\w+\\s*\\)|if\\s*\\(\\s*\\w+\\s*\\=\\=\\s*null\\s*\\))",
+      "description": "Null pointer check",
+      "modernization": "Use std::optional or result type"
+    },
+    "raw_new": {
+      "count": 645,
+      "regex": "\\bnew\\s+\\w+",
+      "description": "Raw new operator",
+      "modernization": "Use smart pointers (std::unique_ptr, RefPtr)"
+    },
+    "out_parameter": {
+      "count": 587,
+      "regex": "\\w+\\s*\\(\\s*[^)]*\\w+\\s*\\*\\*\\s*\\w+\\s*[,)]",
+      "description": "Out parameter",
+      "modernization": "Return value or result type"
+    },
+    "addref_call": {
+      "count": 301,
+      "regex": "(NS_ADDREF|AddRef)\\s*\\(",
+      "description": "Manual AddRef call",
+      "modernization": "Use RefPtr or nsCOMPtr"
+    },
+    "release_call": {
+      "count": 300,
+      "regex": "(NS_RELEASE|Release)\\s*\\(",
+      "description": "Manual Release call",
+      "modernization": "Use RefPtr or nsCOMPtr"
+    },
+    "query_interface": {
+      "count": 393,
+      "regex": "QueryInterface\\s*\\(",
+      "description": "Manual QueryInterface call",
+      "modernization": "Use do_QueryInterface or as<T>()"
+    },
+    "error_check": {
+      "count": 1429,
+      "regex": "(NS_FAILED|NS_SUCCEEDED)\\s*\\(",
+      "description": "Error code check",
+      "modernization": "Use result types with explicit success/failure"
+    },
+    "multiple_out_params": {
+      "count": 90,
+      "regex": "\\w+\\s*\\([^)]*\\w+\\s*\\&[^,)]*,[^)]*\\w+\\s*\\&",
+      "description": "Multiple out parameters",
+      "modernization": "Return std::tuple or custom struct"
+    },
+    "manual_deallocation": {
+      "count": 142,
+      "regex": "\\bfree\\s*\\(",
+      "description": "Manual memory deallocation",
+      "modernization": "Replace with smart pointers or RAII pattern"
+    },
+    "raw_delete": {
+      "count": 135,
+      "regex": "\\bdelete\\s+\\w+",
+      "description": "Raw delete operator",
+      "modernization": "Use smart pointers (std::unique_ptr, RefPtr)"
+    },
+    "array_new": {
+      "count": 72,
+      "regex": "\\bnew\\s+\\w+\\s*\\[",
+      "description": "Raw array allocation",
+      "modernization": "Use std::vector or other container"
+    },
+    "array_delete": {
+      "count": 96,
+      "regex": "\\bdelete\\s*\\[\\s*\\]",
+      "description": "Raw array deallocation",
+      "modernization": "Use std::vector or other container"
+    },
+    "manual_allocation": {
+      "count": 67,
+      "regex": "\\b(malloc|calloc|realloc)\\s*\\(",
+      "description": "Manual memory allocation",
+      "modernization": "Replace with smart pointers or RAII pattern"
+    },
+    "default_opportunity": {
+      "count": 38,
+      "regex": "\\w+::\\~?\\w+\\s*\\(\\s*\\)\\s*\\{\\s*\\}",
+      "description": "Empty constructor/destructor",
+      "modernization": "Use = default"
+    }
+  },
+  "components": {
+    "xpcom": {
+      "file_count": 404,
+      "patterns": {
+        "error_code_return": 2022,
+        "c_style_cast": 1744,
+        "null_check": 1074,
+        "raw_new": 645,
+        "out_parameter": 587,
+        "addref_call": 301,
+        "release_call": 300,
+        "query_interface": 393,
+        "error_check": 1429,
+        "multiple_out_params": 90,
+        "manual_deallocation": 142,
+        "raw_delete": 135,
+        "array_new": 72,
+        "array_delete": 96,
+        "manual_allocation": 67,
+        "default_opportunity": 38
+      }
+    }
+  },
+  "top_files": [
+    {
+      "filepath": "xpcom/components/nsComponentManager.cpp",
+      "total": 434,
+      "component": "xpcom",
+      "patterns": [
+        [
+          "manual_deallocation",
+          4
+        ],
+        [
+          "raw_new",
+          19
+        ],
+        [
+          "raw_delete",
+          8
+        ],
+        [
+          "array_delete",
+          10
+        ],
+        [
+          "error_code_return",
+          118
+        ],
+        [
+          "error_check",
+          124
+        ],
+        [
+          "c_style_cast",
+          34
+        ],
+        [
+          "out_parameter",
+          25
+        ],
+        [
+          "addref_call",
+          13
+        ],
+        [
+          "release_call",
+          3
+        ],
+        [
+          "query_interface",
+          12
+        ],
+        [
+          "null_check",
+          57
+        ],
+        [
+          "multiple_out_params",
+          7
+        ]
+      ]
+    },
+    {
+      "filepath": "xpcom/io/nsFastLoadFile.cpp",
+      "total": 332,
+      "component": "xpcom",
+      "patterns": [
+        [
+          "raw_new",
+          7
+        ],
+        [
+          "array_new",
+          4
+        ],
+        [
+          "array_delete",
+          2
+        ],
+        [
+          "error_code_return",
+          92
+        ],
+        [
+          "error_check",
+          133
+        ],
+        [
+          "c_style_cast",
+          11
+        ],
+        [
+          "out_parameter",
+          2
+        ],
+        [
+          "addref_call",
+          9
+        ],
+        [
+          "release_call",
+          6
+        ],
+        [
+          "query_interface",
+          38
+        ],
+        [
+          "null_check",
+          28
+        ]
+      ]
+    },
+    {
+      "filepath": "xpcom/io/nsLocalFileMac.cpp",
+      "total": 304,
+      "component": "xpcom",
+      "patterns": [
+        [
+          "manual_allocation",
+          1
+        ],
+        [
+          "manual_deallocation",
+          1
+        ],
+        [
+          "raw_new",
+          14
+        ],
+        [
+          "raw_delete",
+          2
+        ],
+        [
+          "error_code_return",
+          125
+        ],
+        [
+          "error_check",
+          97
+        ],
+        [
+          "c_style_cast",
+          5
+        ],
+        [
+          "out_parameter",
+          3
+        ],
+        [
+          "addref_call",
+          5
+        ],
+        [
+          "release_call",
+          3
+        ],
+        [
+          "query_interface",
+          6
+        ],
+        [
+          "null_check",
+          30
+        ],
+        [
+          "default_opportunity",
+          2
+        ],
+        [
+          "multiple_out_params",
+          10
+        ]
+      ]
+    },
+    {
+      "filepath": "xpcom/io/nsLocalFileWin.cpp",
+      "total": 248,
+      "component": "xpcom",
+      "patterns": [
+        [
+          "raw_new",
+          16
+        ],
+        [
+          "raw_delete",
+          3
+        ],
+        [
+          "error_code_return",
+          110
+        ],
+        [
+          "error_check",
+          61
+        ],
+        [
+          "c_style_cast",
+          8
+        ],
+        [
+          "out_parameter",
+          6
+        ],
+        [
+          "addref_call",
+          3
+        ],
+        [
+          "release_call",
+          7
+        ],
+        [
+          "query_interface",
+          8
+        ],
+        [
+          "null_check",
+          25
+        ],
+        [
+          "default_opportunity",
+          1
+        ]
+      ]
+    },
+    {
+      "filepath": "xpcom/ds/nsVariant.cpp",
+      "total": 229,
+      "component": "xpcom",
+      "patterns": [
+        [
+          "raw_new",
+          8
+        ],
+        [
+          "raw_delete",
+          6
+        ],
+        [
+          "error_code_return",
+          117
+        ],
+        [
+          "error_check",
+          20
+        ],
+        [
+          "c_style_cast",
+          19
+        ],
+        [
+          "out_parameter",
+          11
+        ],
+        [
+          "addref_call",
+          2
+        ],
+        [
+          "release_call",
+          1
+        ],
+        [
+          "query_interface",
+          2
+        ],
+        [
+          "null_check",
+          39
+        ],
+        [
+          "multiple_out_params",
+          4
+        ]
+      ]
+    }
+  ]
+}

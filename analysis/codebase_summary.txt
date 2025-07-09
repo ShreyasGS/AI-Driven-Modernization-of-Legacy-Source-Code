@@ -1,0 +1,22 @@
+C++ files:     3959
+Header files:     4539
+C files:     1969
+IDL files:     1063
+Total directories:     2398
+
+Comment Statistics:
+Files with block comments:    10269
+Files with line comments:     9668
+
+Memory Management:
+Manual memory allocations:
+  malloc calls:      479
+  free calls:     1355
+  new operator:     1968
+  delete operator:     1032
+
+Error Handling:
+Error handling patterns:
+  Files with NS_SUCCEEDED:     1133
+  Files with NS_FAILED:     1270
+  Files with try/catch:       49

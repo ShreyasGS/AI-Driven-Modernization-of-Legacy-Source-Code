@@ -1,0 +1,5 @@
+Manual memory allocations:
+  malloc calls:      479
+  free calls:     1355
+  new operator:     1968
+  delete operator:     1032

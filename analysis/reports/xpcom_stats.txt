@@ -1,0 +1,6 @@
+Module: xpcom
+  C++ files:      235
+  Header files:      179
+  C files:       81
+  IDL files:       82
+  Total lines of code:   190980 total
