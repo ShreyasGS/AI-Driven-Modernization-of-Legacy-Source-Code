@@ -928,6 +928,12 @@ We've created four comprehensive modernization templates for the most common pat
    - Shows how to use std::optional, std::tuple, and custom structs
    - Integrates with the Result type for error handling
 
+5. **Manual Reference Counting → Smart Pointers**
+   - Provides patterns for replacing manual AddRef/Release calls with XPCOM smart pointers
+   - Explains when to use RefPtr vs. nsCOMPtr
+   - Includes common patterns and their modernized equivalents
+   - Shows how to integrate with the Result type pattern
+
 Each template includes detailed before/after examples, step-by-step implementation guides, and compatibility considerations. These templates will serve as the foundation for our modernization efforts.
 
 For the complete set of templates, see [Modernization Templates](modernization_templates/README.md).
