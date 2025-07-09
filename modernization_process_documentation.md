@@ -34,13 +34,13 @@ Based on the baseline measurements, we've created the following modernization te
    - [Template Documentation](modernization_templates/error_code_result_type.md)
 
 2. **Raw Pointers → Smart Pointers**
-   - [Template Documentation](modernization_templates/raw_pointers_to_smart_pointers.md)
+   - [Template Documentation](modernization_templates/raw_ptr_to_smart_ptr.md)
 
 3. **C-style Casts → Safe Casts**
    - [Template Documentation](modernization_templates/c_style_cast_to_safe_cast.md)
 
 4. **Out Parameters → Return Values**
-   - [Template Documentation](modernization_templates/out_parameters_to_return_values.md)
+   - [Template Documentation](modernization_templates/out_param_to_return_value.md)
 
 5. **Manual Reference Counting → Smart Pointers**
    - [Template Documentation](modernization_templates/manual_refcount_to_smart_ptr.md)
