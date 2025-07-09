@@ -123,6 +123,45 @@ def count_pattern_occurrences(file_path):
     
     return results
 
+def measure_documentation_metrics():
+    """Measure documentation metrics for the modernization project."""
+    doc_metrics = {
+        'doc_files': 0,
+        'doc_lines': 0,
+        'modernization_doc_files': 0,
+        'modernization_doc_lines': 0,
+        'template_doc_files': 0,
+        'template_doc_lines': 0
+    }
+    
+    # Count documentation files
+    doc_files = []
+    for root, _, files in os.walk('.'):
+        for file in files:
+            if file.endswith('.md'):
+                file_path = os.path.join(root, file)
+                doc_files.append(file_path)
+                
+                # Count lines in documentation files
+                try:
+                    with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+                        content = f.read()
+                        lines = content.count('\n') + 1
+                        doc_metrics['doc_files'] += 1
+                        doc_metrics['doc_lines'] += lines
+                        
+                        # Categorize documentation files
+                        if 'modernization_' in file or 'modernized_' in file:
+                            doc_metrics['modernization_doc_files'] += 1
+                            doc_metrics['modernization_doc_lines'] += lines
+                        elif file_path.startswith('./modernization_templates/'):
+                            doc_metrics['template_doc_files'] += 1
+                            doc_metrics['template_doc_lines'] += lines
+                except Exception as e:
+                    print(f"Error reading documentation file {file_path}: {e}")
+    
+    return doc_metrics
+
 def analyze_file(file_path):
     """Analyze a single file for all metrics."""
     if not os.path.isfile(file_path):
@@ -201,10 +240,25 @@ def main():
     parser.add_argument('directory', help='Directory to analyze')
     parser.add_argument('-o', '--output', help='Output JSON file')
     parser.add_argument('-f', '--file', help='Analyze a single file')
+    parser.add_argument('-d', '--doc-metrics', action='store_true', help='Include documentation metrics')
     args = parser.parse_args()
+    
+    # Measure documentation metrics if requested
+    doc_metrics = None
+    if args.doc_metrics:
+        print("Measuring documentation metrics...")
+        doc_metrics = measure_documentation_metrics()
+        print(f"Documentation files: {doc_metrics['doc_files']}")
+        print(f"Documentation lines: {doc_metrics['doc_lines']}")
+        print(f"Modernization documentation files: {doc_metrics['modernization_doc_files']}")
+        print(f"Modernization documentation lines: {doc_metrics['modernization_doc_lines']}")
+        print(f"Template documentation files: {doc_metrics['template_doc_files']}")
+        print(f"Template documentation lines: {doc_metrics['template_doc_lines']}")
     
     if args.file:
         metrics = analyze_file(args.file)
+        if doc_metrics:
+            metrics['documentation_metrics'] = doc_metrics
         print(json.dumps(metrics, indent=2))
         
         # Save results to file if specified
@@ -217,12 +271,35 @@ def main():
             except Exception as e:
                 print(f"Error saving results to {args.output}: {e}")
     else:
-        summary, _ = analyze_directory(args.directory, args.output)
+        summary, results = analyze_directory(args.directory, args.output)
+        if doc_metrics:
+            summary['documentation_metrics'] = doc_metrics
+            
+            # If output file was specified, update it with documentation metrics
+            if args.output:
+                try:
+                    with open(args.output, 'r') as f:
+                        data = json.load(f)
+                    data['summary']['documentation_metrics'] = doc_metrics
+                    with open(args.output, 'w') as f:
+                        json.dump(data, f, indent=2)
+                except Exception as e:
+                    print(f"Error updating output file with documentation metrics: {e}")
+                    
         print("\nSummary:")
         print(f"Total files analyzed: {summary['total_files']}")
         print("\nPattern occurrences:")
         for pattern_name, count in summary['pattern_totals'].items():
             print(f"  {PATTERNS[pattern_name]['description']}: {count}")
+        
+        if doc_metrics:
+            print("\nDocumentation metrics:")
+            print(f"  Documentation files: {doc_metrics['doc_files']}")
+            print(f"  Documentation lines: {doc_metrics['doc_lines']}")
+            print(f"  Modernization documentation files: {doc_metrics['modernization_doc_files']}")
+            print(f"  Modernization documentation lines: {doc_metrics['modernization_doc_lines']}")
+            print(f"  Template documentation files: {doc_metrics['template_doc_files']}")
+            print(f"  Template documentation lines: {doc_metrics['template_doc_lines']}")
 
 if __name__ == "__main__":
     main() 

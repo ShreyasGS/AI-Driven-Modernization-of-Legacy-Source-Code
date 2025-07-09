@@ -16,7 +16,7 @@ PROGRESS_FILE="${REPORTS_DIR}/nsSelection_progress_${TIMESTAMP}.json"
 REPORT_FILE="${REPORTS_DIR}/modernization_report_${TIMESTAMP}.md"
 
 echo "Updating KPIs for nsSelection.cpp..."
-python3 "${SCRIPT_DIR}/measure_modernization_kpis.py" . -f "${ORIGINAL_FILE}" -o "${KPI_FILE}"
+python3 "${SCRIPT_DIR}/measure_modernization_kpis.py" . -f "${ORIGINAL_FILE}" -o "${KPI_FILE}" -d
 
 echo "Tracking modernization progress..."
 python3 "${SCRIPT_DIR}/track_nsSelection_progress.py" "${ORIGINAL_FILE}" . -o "${PROGRESS_FILE}"

@@ -23,6 +23,7 @@ def generate_text_report(kpi_data, progress_data=None, output_file=None):
     function_length = kpi_data.get('function_length', {})
     cyclomatic_complexity = kpi_data.get('cyclomatic_complexity', 0)
     comment_ratio = kpi_data.get('comment_ratio', 0)
+    doc_metrics = kpi_data.get('documentation_metrics', {})
     
     # Start building the report
     report = []
@@ -42,6 +43,17 @@ def generate_text_report(kpi_data, progress_data=None, output_file=None):
     for pattern_name, count in patterns.items():
         report.append(f"- {pattern_name.replace('_', ' ').title()}: {count}")
     report.append("")
+    
+    # Add documentation metrics if available
+    if doc_metrics:
+        report.append("## Documentation Metrics")
+        report.append(f"- Total Documentation Files: {doc_metrics.get('doc_files', 0)}")
+        report.append(f"- Total Documentation Lines: {doc_metrics.get('doc_lines', 0)}")
+        report.append(f"- Modernization Documentation Files: {doc_metrics.get('modernization_doc_files', 0)}")
+        report.append(f"- Modernization Documentation Lines: {doc_metrics.get('modernization_doc_lines', 0)}")
+        report.append(f"- Template Documentation Files: {doc_metrics.get('template_doc_files', 0)}")
+        report.append(f"- Template Documentation Lines: {doc_metrics.get('template_doc_lines', 0)}")
+        report.append("")
     
     # Add progress information if available
     if progress_data:
