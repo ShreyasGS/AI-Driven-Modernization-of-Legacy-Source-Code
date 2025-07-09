@@ -804,6 +804,53 @@ Name the script 'modernization_finder.py' and make it configurable to scan speci
 
 **Expected Outcome:** A Python script to identify modernization opportunities across the codebase.
 
+**Actual Implementation:**
+We've created the `modernization_finder.py` script that detects multiple patterns in C/C++ code:
+
+- Memory management patterns (malloc/free, new/delete)
+- Error handling patterns (NS_OK/NS_ERROR returns)
+- Type casting patterns (C-style casts)
+- Parameter patterns (out parameters)
+- Reference counting patterns (AddRef/Release)
+- QueryInterface patterns
+- Null checking patterns
+- Modern C++ opportunities
+
+The tool generates comprehensive reports in both Markdown and JSON formats, providing statistics by component and pattern, and identifying top files with modernization opportunities.
+
+**Sample Results:**
+Running the tool on the XPCOM component identified 404 files with modernization opportunities. The most common patterns were:
+
+1. Error code returns (2022 occurrences)
+2. C-style casts (1744 occurrences)
+3. Error checks (1429 occurrences)
+4. Null checks (1074 occurrences)
+5. Raw new operators (645 occurrences)
+
+The top files with modernization opportunities were:
+1. nsComponentManager.cpp (434 opportunities)
+2. nsFastLoadFile.cpp (332 opportunities)
+3. nsLocalFileMac.cpp (304 opportunities)
+
+For detailed usage information, see [Modernization Finder Usage](analysis/modernization_finder_usage.md).
+For a sample report, see [XPCOM Modernization Opportunities](analysis/reports/samples/xpcom_modernization_opportunities.md).
+
+### Step 19: Establish Baseline Measurements
+
+1. Run the modernization finder tool on the entire codebase:
+
+**Prompt:**
+```
+Let's run the modernization finder tool on the entire codebase to establish a baseline measurement. Please:
+
+1. Run the tool on all major components
+2. Generate a summary report of modernization opportunities
+3. Create a visualization of the results
+4. Identify the top components and files for modernization
+```
+
+**Expected Outcome:** A baseline measurement of modernization opportunities across the codebase.
+
 ## Next Components to Analyze
 
 After completing the DOM and Layout Engine analysis, the next components to analyze should be:
