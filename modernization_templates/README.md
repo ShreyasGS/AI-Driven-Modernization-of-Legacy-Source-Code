@@ -12,11 +12,11 @@ This directory contains templates for common modernization patterns identified i
    - Replaces raw pointers with appropriate smart pointers
    - Addresses memory management issues (3,245 raw new occurrences)
 
-## Planned Templates
-
-3. C-style Casts → Safe Casts
+3. [C-style Casts → Safe Casts](c_style_cast_to_safe_cast.md)
    - Replaces C-style casts with safer alternatives (static_cast, dynamic_cast)
-   - Will address 5,098 occurrences found in our baseline
+   - Addresses 5,098 occurrences found in our baseline
+
+## Planned Templates
 
 4. Out Parameters → Return Values
    - Replaces out parameters with return values
