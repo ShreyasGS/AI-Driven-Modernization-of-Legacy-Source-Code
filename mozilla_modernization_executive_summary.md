@@ -68,19 +68,19 @@ The Mozilla 1.0 Codebase Modernization project aims to transform legacy C/C++ co
 
 ## Next Steps
 
-### Short-term (1-3 months)
+### Short-term (2-4 weeks)
 1. Complete modernization of remaining methods in nsSelection.cpp
 2. Expand to next priority file: nsXULDocument.cpp
 3. Refine modernization templates based on implementation experience
 4. Continue regular KPI measurements to track progress
 
-### Medium-term (3-6 months)
+### Medium-term (1-2 months)
 1. Modernize top 5 priority files identified in our analysis
 2. Develop automated tools to assist with pattern detection and transformation
 3. Create training materials for team members on applying modernization templates
 4. Establish code review guidelines focused on modernization patterns
 
-### Long-term (6+ months)
+### Long-term (2-3 months)
 1. Expand modernization effort to broader codebase
 2. Integrate modernization patterns into development workflow
 3. Gradually phase out compatibility wrappers as code adopts modern interfaces
