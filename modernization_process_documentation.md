@@ -635,6 +635,11 @@ We've developed templates for the most common modernization patterns identified 
    - Addresses 5,027 occurrences found in our baseline
    - Makes APIs more intuitive and easier to use with modern C++ features
 
+5. **Manual Reference Counting → Smart Pointers**
+   - Replaces manual AddRef/Release calls with XPCOM smart pointers
+   - Addresses 2,832 occurrences found in our baseline
+   - Eliminates reference counting errors and improves code clarity
+
 ### Template Structure
 
 Each template includes:
