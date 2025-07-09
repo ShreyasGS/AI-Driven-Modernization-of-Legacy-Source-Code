@@ -24,8 +24,8 @@ python3 "${SCRIPT_DIR}/track_nsSelection_progress.py" "${ORIGINAL_FILE}" . -o "$
 echo "Generating KPI report..."
 python3 "${SCRIPT_DIR}/generate_kpi_report.py" "${KPI_FILE}" -p "${PROGRESS_FILE}" -o "${REPORT_FILE}"
 
-# Create a symbolic link to the latest report
-ln -sf "modernization_report_${TIMESTAMP}.md" "${REPORTS_DIR}/modernization_report_latest.md"
+# Create a copy of the latest report instead of a symbolic link for GitHub compatibility
+cp "${REPORT_FILE}" "${REPORTS_DIR}/modernization_report_latest.md"
 
 echo "KPI update complete. Report available at:"
 echo "${REPORTS_DIR}/modernization_report_latest.md"
