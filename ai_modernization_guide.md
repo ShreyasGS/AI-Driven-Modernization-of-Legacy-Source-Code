@@ -222,24 +222,7 @@ Let's create comprehensive documentation of our modernization process. Please cr
 
 **Expected Outcome:** A comprehensive document describing the modernization process.
 
-### Step 12: Create Modernization Dashboard
-
-**Prompt:**
-```
-Let's create a simple dashboard to visualize our modernization progress. Please:
-
-1. Create an HTML dashboard that shows:
-   - Overall progress percentage
-   - KPI measurements over time
-   - Modernized methods
-   - Pattern reduction statistics
-
-2. Update the dashboard generation script to run automatically with our KPI measurements
-```
-
-**Expected Outcome:** An HTML dashboard for visualizing modernization progress.
-
-### Step 13: Document Next Steps
+### Step 12: Document Next Steps
 
 **Prompt:**
 ```
@@ -255,7 +238,7 @@ Based on our pilot implementation, let's document next steps for the modernizati
 
 ## Phase 5: Continuous Improvement
 
-### Step 14: Refine KPI Measurement
+### Step 13: Refine KPI Measurement
 
 **Prompt:**
 ```
@@ -273,7 +256,7 @@ Let's enhance our KPI measurement infrastructure to include documentation metric
 
 **Expected Outcome:** Enhanced KPI measurement infrastructure that includes documentation metrics.
 
-### Step 15: Update Documentation
+### Step 14: Update Documentation
 
 **Prompt:**
 ```
