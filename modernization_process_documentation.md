@@ -443,3 +443,47 @@ Based on our progress, our next steps include:
 2. Developing tools to assist with identifying modernization opportunities
 3. Implementing more components using our established patterns
 4. Measuring improvements using our defined KPIs 
+
+## Layout Engine Implementation
+
+### Overview
+
+Following our analysis of the layout engine, we've implemented a modernized version of a key layout component: nsLeafFrame. This implementation demonstrates the practical application of our modernization patterns to the layout engine.
+
+### Implementation Approach
+
+We created a modernized version of nsLeafFrame with the following improvements:
+
+1. **Namespace Organization**: Placed the implementation in the `mozilla` namespace to clearly separate it from legacy code.
+
+2. **Factory Methods**: Replaced global creation functions with static factory methods that return smart pointers.
+
+3. **Result Types**: Introduced result types that combine return values and error codes, eliminating out parameters.
+
+4. **RAII for Resource Management**: Implemented RAII patterns for resource acquisition and release, particularly for rendering context state management.
+
+5. **Modern C++ Features**: Utilized features like default constructors/destructors, deleted copy operations, and safe type casting.
+
+6. **Compatibility Layer**: Maintained compatibility with legacy code by implementing the original interfaces and providing legacy creation functions.
+
+### Concrete Implementation
+
+To demonstrate how the modernized LeafFrame can be used, we created a simple SpaceFrame implementation that inherits from the modernized base class. This implementation showcases:
+
+1. Proper inheritance from the modernized base class
+2. Factory method pattern
+3. Clean implementation of virtual methods
+4. Proper encapsulation of data members
+
+### Results and Benefits
+
+The modernized implementation offers several benefits:
+
+1. **Improved Safety**: Smart pointers and RAII prevent resource leaks.
+2. **Better Error Handling**: Result types make error conditions explicit.
+3. **Cleaner Code**: Modern C++ features result in more readable and maintainable code.
+4. **Compatibility**: The dual API approach allows gradual migration without breaking existing code.
+
+For detailed implementation and examples, see:
+- [Layout Modernization Example](layout_modernization_example.md)
+- [Modernized LeafFrame Implementation](layout/html/base/src/nsLeafFrameModern.h) 
