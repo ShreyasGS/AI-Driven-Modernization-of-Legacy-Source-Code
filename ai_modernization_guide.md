@@ -905,6 +905,52 @@ Each template should include:
 
 **Expected Outcome:** A set of modernization templates for common patterns.
 
+**Actual Implementation:**
+We've created four comprehensive modernization templates for the most common patterns identified in our baseline:
+
+1. **Error Code Returns → Result Types**
+   - Provides a template for replacing error code returns with a Result type
+   - Includes a complete Result<T> implementation with proper move semantics
+   - Demonstrates compatibility layer approach for gradual migration
+
+2. **Raw Pointers → Smart Pointers**
+   - Guides the selection of appropriate smart pointers based on ownership semantics
+   - Covers both standard C++ smart pointers and XPCOM-specific options
+   - Includes examples for both regular C++ classes and XPCOM components
+
+3. **C-style Casts → Safe Casts**
+   - Explains when to use each type of C++ cast (static_cast, dynamic_cast, const_cast)
+   - Provides XPCOM-specific guidance for interface casting
+   - Includes safety considerations for each cast type
+
+4. **Out Parameters → Return Values**
+   - Demonstrates techniques for returning single and multiple values
+   - Shows how to use std::optional, std::tuple, and custom structs
+   - Integrates with the Result type for error handling
+
+Each template includes detailed before/after examples, step-by-step implementation guides, and compatibility considerations. These templates will serve as the foundation for our modernization efforts.
+
+For the complete set of templates, see [Modernization Templates](modernization_templates/README.md).
+
+### Step 21: Apply Templates to Priority Files
+
+1. Apply the modernization templates to the highest-priority files:
+
+**Prompt:**
+```
+Based on our baseline measurements, let's apply our modernization templates to the top priority files. Please:
+
+1. Start with nsSelection.cpp, which has the most modernization opportunities
+2. Apply the error code return → result type pattern to key functions
+3. Apply the raw pointer → smart pointer pattern where appropriate
+4. Apply the C-style cast → safe cast pattern
+5. Apply the out parameter → return value pattern
+
+Focus on making incremental, compatible changes that preserve the original behavior.
+```
+
+**Expected Outcome:** Modernized versions of priority files with improved safety and maintainability.
+
 ## Next Components to Analyze
 
 After completing the DOM and Layout Engine analysis, the next components to analyze should be:
