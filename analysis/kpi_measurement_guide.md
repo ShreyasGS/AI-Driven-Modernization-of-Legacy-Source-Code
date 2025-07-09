@@ -8,19 +8,12 @@ We've established several Key Performance Indicators (KPIs) to measure our moder
 
 1. **measure_modernization_kpis.py** - Analyzes C/C++ code for modernization patterns and code quality metrics
 2. **track_nsSelection_progress.py** - Tracks modernization progress specifically for nsSelection.cpp
-3. **modernization_dashboard.py** - Generates an HTML dashboard to visualize progress
-4. **update_kpis.sh** - A shell script that runs all the above tools and updates the dashboard
+3. **generate_kpi_report.py** - Generates a text-based report of KPIs and progress
+4. **update_kpis_report.sh** - A shell script that runs all the above tools and generates a comprehensive report
 
 ## Requirements
 
 - Python 3.6+
-- matplotlib (for dashboard charts)
-
-Install the required Python packages:
-
-```bash
-pip3 install matplotlib
-```
 
 ## Using the Tools
 
@@ -57,39 +50,42 @@ Example:
 python3 analysis/track_nsSelection_progress.py content/base/src/nsSelection.cpp . -o analysis/reports/nsSelection_progress.json
 ```
 
-### Generating the Dashboard
+### Generating a KPI Report
 
 ```bash
-python3 analysis/modernization_dashboard.py <kpi_file.json> -p <progress_file.json> -o <output.html>
+python3 analysis/generate_kpi_report.py <kpi_file.json> -p <progress_file.json> -o <output.md>
 ```
 
 Example:
 ```bash
-python3 analysis/modernization_dashboard.py analysis/reports/nsSelection_baseline_kpis.json -p analysis/reports/nsSelection_progress.json -o analysis/dashboard/modernization_dashboard.html
+python3 analysis/generate_kpi_report.py analysis/reports/nsSelection_baseline_kpis.json -p analysis/reports/nsSelection_progress.json -o analysis/reports/modernization_report.md
 ```
 
 ### Using the Update Script
 
-The easiest way to update all KPIs and regenerate the dashboard is to use the update script:
+The easiest way to update all KPIs and generate a report is to use the update script:
 
 ```bash
-./analysis/update_kpis.sh
+./analysis/update_kpis_report.sh
 ```
 
 This script:
 1. Measures KPIs for nsSelection.cpp
 2. Tracks modernization progress
-3. Generates a timestamped dashboard
-4. Updates the latest dashboard link
+3. Generates a timestamped report
+4. Creates a symbolic link to the latest report
+5. Displays the report contents
 
-## Dashboard Features
+## Report Contents
 
-The modernization dashboard includes:
+The modernization report includes:
 
 - Code quality metrics (cyclomatic complexity, function length, comment ratio)
-- Pattern distribution charts
-- Modernization progress visualization
+- Code pattern distribution
+- Modernization progress statistics
 - List of modernized methods
+- Pattern reduction information
+- Next steps for the modernization effort
 
 ## Measurement Schedule
 
@@ -106,14 +102,13 @@ To add new metrics to the measurement tools:
 
 1. Add new pattern definitions to the `PATTERNS` dictionary in `measure_modernization_kpis.py`
 2. Implement new measurement functions as needed
-3. Update the dashboard generation code in `modernization_dashboard.py`
+3. Update the report generation code in `generate_kpi_report.py`
 
 ## Troubleshooting
 
 If you encounter issues:
 
 - Ensure Python 3.6+ is installed
-- Verify matplotlib is installed
 - Check file paths are correct
 - Ensure write permissions for output directories
 
