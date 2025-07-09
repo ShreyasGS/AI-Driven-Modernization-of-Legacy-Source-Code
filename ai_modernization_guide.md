@@ -938,7 +938,73 @@ Each template includes detailed before/after examples, step-by-step implementati
 
 For the complete set of templates, see [Modernization Templates](modernization_templates/README.md).
 
-### Step 21: Apply Templates to Priority Files
+### Step 21: Create KPI Measurement Infrastructure
+
+1. Define specific KPIs and create measurement tools:
+
+**Prompt:**
+```
+Now that we have our modernization templates and have started applying them, we need a way to measure our progress. Let's create a KPI measurement infrastructure that can:
+
+1. Define specific, measurable KPIs for our modernization effort
+2. Track progress on applying modernization templates
+3. Measure code quality improvements
+4. Generate regular reports on our progress
+
+Please create:
+1. A document defining our KPIs (nsSelection_modernization_kpis.md)
+2. A Python script to measure code quality metrics (measure_modernization_kpis.py)
+3. A Python script to track modernization progress (track_nsSelection_progress.py)
+4. A Python script to generate KPI reports (generate_kpi_report.py)
+5. A shell script to automate the measurement process (update_kpis_report.sh)
+```
+
+**Expected Outcome:** A comprehensive KPI measurement infrastructure.
+
+**Actual Implementation:**
+We've created a complete KPI measurement infrastructure consisting of:
+
+1. **KPI Definition Document**: Created nsSelection_modernization_kpis.md defining KPIs in five categories:
+   - Code Quality Metrics (cyclomatic complexity, function length, etc.)
+   - Modernization Coverage (tracking conversion of patterns)
+   - Performance Metrics (memory usage, CPU usage, etc.)
+   - Reliability Metrics (test coverage, bug count, etc.)
+   - Developer Experience Metrics (readability, maintainability, etc.)
+
+2. **Code Quality Measurement Script**: Implemented measure_modernization_kpis.py that:
+   - Analyzes C/C++ code for modernization patterns
+   - Measures cyclomatic complexity
+   - Calculates function lengths
+   - Determines comment-to-code ratio
+   - Counts occurrences of various patterns (manual reference counting, error code returns, etc.)
+
+3. **Progress Tracking Script**: Created track_nsSelection_progress.py that:
+   - Tracks which methods have been modernized
+   - Counts original vs. modernized pattern occurrences
+   - Calculates progress percentages
+   - Identifies remaining work
+
+4. **KPI Report Generator**: Implemented generate_kpi_report.py that:
+   - Creates text-based reports of KPI measurements
+   - Shows progress against baseline metrics
+   - Highlights modernized methods
+   - Provides pattern reduction statistics
+
+5. **Automation Script**: Created update_kpis_report.sh that:
+   - Runs all measurement scripts
+   - Generates timestamped reports
+   - Creates symbolic links to the latest reports
+   - Displays report contents
+
+The infrastructure allows us to:
+- Establish baseline measurements before modernization
+- Track progress as we apply modernization templates
+- Measure the impact of our changes on code quality
+- Generate regular reports to communicate progress
+
+For detailed usage instructions, see [KPI Measurement Guide](analysis/kpi_measurement_guide.md).
+
+### Step 22: Apply Templates to Priority Files
 
 1. Apply the modernization templates to the highest-priority files:
 
