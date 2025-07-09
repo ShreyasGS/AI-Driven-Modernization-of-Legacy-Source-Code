@@ -16,11 +16,11 @@ This directory contains templates for common modernization patterns identified i
    - Replaces C-style casts with safer alternatives (static_cast, dynamic_cast)
    - Addresses 5,098 occurrences found in our baseline
 
-## Planned Templates
-
-4. Out Parameters → Return Values
+4. [Out Parameters → Return Values](out_param_to_return_value.md)
    - Replaces out parameters with return values
-   - Will address 5,027 occurrences found in our baseline
+   - Addresses 5,027 occurrences found in our baseline
+
+## Planned Templates
 
 5. Manual Reference Counting → RefPtr/nsCOMPtr
    - Replaces manual AddRef/Release calls with smart pointers
