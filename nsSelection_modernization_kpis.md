@@ -78,7 +78,13 @@ This document outlines the Key Performance Indicators (KPIs) for measuring the s
 
 ## Reporting
 
-We will create a dashboard to visualize our progress against these KPIs. The dashboard will be updated according to the measurement frequency for each metric and will be accessible to all team members.
+We will generate text-based reports to track our progress against these KPIs. The reports will be:
+
+1. **KPI Measurement Reports** - Generated after each measurement run
+2. **Progress Reports** - Showing modernization progress over time
+3. **Summary Reports** - Comprehensive analysis at major milestones
+
+These reports will be generated automatically using our measurement scripts and will be stored in the `analysis/reports` directory with timestamps for historical tracking. The latest report will always be available at `analysis/reports/modernization_report_latest.md`.
 
 ## Next Steps
 
