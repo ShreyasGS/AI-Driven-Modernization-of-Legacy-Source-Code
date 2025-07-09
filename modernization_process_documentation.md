@@ -487,3 +487,57 @@ The modernized implementation offers several benefits:
 For detailed implementation and examples, see:
 - [Layout Modernization Example](layout_modernization_example.md)
 - [Modernized LeafFrame Implementation](layout/html/base/src/nsLeafFrameModern.h) 
+
+## Modernization Finder Tool
+
+### Overview
+
+We've developed a modernization finder tool to identify patterns in the codebase that could benefit from modernization. This Python-based tool scans C/C++ code files, detects various patterns, and generates comprehensive reports.
+
+### Implementation
+
+The tool is implemented as a Python script (`analysis/modernization_finder.py`) that:
+
+1. Searches for files matching specific patterns
+2. Analyzes each file for modernization opportunities
+3. Generates detailed reports in both Markdown and JSON formats
+
+The tool detects various patterns including:
+
+- Memory management (malloc/free, new/delete)
+- Error handling (NS_OK/NS_ERROR returns)
+- Type casting (C-style casts)
+- Parameter patterns (out parameters)
+- Reference counting (AddRef/Release)
+- QueryInterface patterns
+- Null checking
+- Modern C++ opportunities
+
+### Results for XPCOM Component
+
+We ran the tool on the XPCOM component as a test case, and it identified 404 files with modernization opportunities. The most common patterns were:
+
+1. **Error Code Return** (2022 occurrences): Functions returning NS_OK/NS_ERROR
+2. **C-style Cast** (1744 occurrences): Unsafe type casting
+3. **Error Check** (1429 occurrences): NS_FAILED/NS_SUCCEEDED checks
+4. **Null Check** (1074 occurrences): Manual null pointer checking
+5. **Raw New** (645 occurrences): Raw memory allocation with new
+
+The top files with modernization opportunities were:
+
+1. **nsComponentManager.cpp** (434 opportunities)
+2. **nsFastLoadFile.cpp** (332 opportunities)
+3. **nsLocalFileMac.cpp** (304 opportunities)
+4. **nsLocalFileWin.cpp** (248 opportunities)
+5. **nsVariant.cpp** (229 opportunities)
+
+### Integration with Modernization Process
+
+The modernization finder tool supports our process by:
+
+1. **Identifying Opportunities**: Finding code patterns that could benefit from modernization
+2. **Measuring Progress**: Tracking the reduction of legacy patterns over time
+3. **Prioritizing Efforts**: Identifying components and files with the most modernization opportunities
+4. **Validating Implementations**: Verifying that modernized components follow best practices
+
+For detailed usage information, see [Modernization Finder Usage](analysis/modernization_finder_usage.md) 
