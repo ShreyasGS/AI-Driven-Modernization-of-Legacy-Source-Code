@@ -851,6 +851,60 @@ Let's run the modernization finder tool on the entire codebase to establish a ba
 
 **Expected Outcome:** A baseline measurement of modernization opportunities across the codebase.
 
+**Actual Implementation:**
+We ran the modernization finder tool on 5 major components (Content, Layout, XPCOM, GFX, and DOM) and analyzed 1,933 files. The tool identified 1,569 files (81.2%) with modernization opportunities, totaling 52,116 opportunities.
+
+Key findings from the baseline measurements:
+
+1. **Most Common Patterns**:
+   - Error Code Return (15,486 occurrences)
+   - Error Check (6,510 occurrences)
+   - Null Check (5,966 occurrences)
+   - C-style Cast (5,098 occurrences)
+   - Out Parameter (5,027 occurrences)
+
+2. **Component Analysis**:
+   - Content: 448 files with modernization opportunities
+   - Layout: 406 files with modernization opportunities
+   - XPCOM: 404 files with modernization opportunities
+   - GFX: 265 files with modernization opportunities
+   - DOM: 46 files with modernization opportunities
+
+3. **Priority Files**:
+   - content/base/src/nsSelection.cpp (1,204 opportunities)
+   - content/xul/document/src/nsXULDocument.cpp (1,115 opportunities)
+   - layout/html/style/src/nsCSSFrameConstructor.cpp (763 opportunities)
+
+We created both a detailed report and interactive visualizations of the baseline data:
+- [Baseline Summary](analysis/reports/baseline/summary.md)
+- [Baseline Visualization](analysis/reports/baseline/visualization.html)
+
+Based on these findings, we've developed a three-pronged modernization strategy:
+1. **Pattern-Based Modernization**: Focus on the most common patterns first
+2. **Component-Based Modernization**: Prioritize components based on impact and opportunities
+3. **File-Based Modernization**: Start with the files that have the most opportunities
+
+### Step 20: Develop Modernization Templates
+
+1. Create templates for common modernization patterns:
+
+**Prompt:**
+```
+Based on our baseline measurements, let's develop modernization templates for the most common patterns we identified. Please create:
+
+1. A template for replacing error code returns with result types
+2. A template for replacing raw pointers with smart pointers
+3. A template for replacing C-style casts with safer alternatives
+4. A template for replacing out parameters with return values
+
+Each template should include:
+- Before and after code examples
+- Step-by-step instructions for applying the pattern
+- Notes on compatibility considerations
+```
+
+**Expected Outcome:** A set of modernization templates for common patterns.
+
 ## Next Components to Analyze
 
 After completing the DOM and Layout Engine analysis, the next components to analyze should be:

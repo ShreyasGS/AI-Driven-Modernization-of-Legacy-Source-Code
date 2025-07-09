@@ -541,3 +541,68 @@ The modernization finder tool supports our process by:
 4. **Validating Implementations**: Verifying that modernized components follow best practices
 
 For detailed usage information, see [Modernization Finder Usage](analysis/modernization_finder_usage.md) 
+
+## Baseline Measurements
+
+### Overview
+
+We've established baseline measurements of modernization opportunities across major components of the Mozilla 1.0 codebase. This baseline will serve as a reference point for tracking our modernization progress.
+
+### Methodology
+
+We used the modernization finder tool to analyze 1,933 files across 5 key components:
+- Content
+- Layout
+- XPCOM
+- GFX
+- DOM
+
+### Key Findings
+
+1. **Overall Statistics**:
+   - 1,569 files (81.2%) with modernization opportunities
+   - 52,116 total modernization opportunities identified
+   - 33.2 average opportunities per file
+
+2. **Most Common Patterns**:
+   - Error Code Return (15,486 occurrences)
+   - Error Check (6,510 occurrences)
+   - Null Check (5,966 occurrences)
+   - C-style Cast (5,098 occurrences)
+   - Out Parameter (5,027 occurrences)
+
+3. **Component Analysis**:
+   - Content: 448 files with modernization opportunities
+   - Layout: 406 files with modernization opportunities
+   - XPCOM: 404 files with modernization opportunities
+   - GFX: 265 files with modernization opportunities
+   - DOM: 46 files with modernization opportunities
+
+4. **Priority Files**:
+   - content/base/src/nsSelection.cpp (1,204 opportunities)
+   - content/xul/document/src/nsXULDocument.cpp (1,115 opportunities)
+   - layout/html/style/src/nsCSSFrameConstructor.cpp (763 opportunities)
+   - layout/html/base/src/nsPresShell.cpp (703 opportunities)
+   - content/xul/content/src/nsXULElement.cpp (651 opportunities)
+
+### Modernization Strategy
+
+Based on these findings, we've developed a three-pronged modernization strategy:
+
+1. **Pattern-Based Modernization**: Focus on the most common patterns first
+2. **Component-Based Modernization**: Prioritize components based on impact and opportunities
+3. **File-Based Modernization**: Start with the files that have the most opportunities
+
+### Progress Tracking
+
+We'll track our modernization progress by:
+
+1. Re-running the modernization finder tool regularly
+2. Comparing results against the baseline
+3. Tracking reduction in modernization opportunities
+4. Measuring improvements in code quality metrics
+
+For detailed baseline information, see:
+- [Baseline Summary](analysis/reports/baseline/summary.md)
+- [Baseline Visualization](analysis/reports/baseline/visualization.html)
+- [Full Baseline Report](analysis/reports/baseline/modernization_opportunities.md) 
