@@ -1,0 +1,1336 @@
+{
+  "timestamp": "2025-07-09 11:47:19",
+  "summary": {
+    "total_files": 1569,
+    "total_components": 5
+  },
+  "patterns": {
+    "error_code_return": {
+      "count": 15486,
+      "regex": "\\breturn\\s+NS_(OK|ERROR)",
+      "description": "Error code return",
+      "modernization": "Use result types or exceptions"
+    },
+    "c_style_cast": {
+      "count": 5098,
+      "regex": "\\(\\s*(const\\s+)?\\w+(\\s*\\*+\\s*)+\\)\\s*\\w+",
+      "description": "C-style cast",
+      "modernization": "Use static_cast, dynamic_cast, or const_cast"
+    },
+    "null_check": {
+      "count": 5966,
+      "regex": "(if\\s*\\(\\s*(\\!|null\\s*\\!=)\\s*\\w+\\s*\\)|if\\s*\\(\\s*\\w+\\s*\\=\\=\\s*null\\s*\\))",
+      "description": "Null pointer check",
+      "modernization": "Use std::optional or result type"
+    },
+    "raw_new": {
+      "count": 3245,
+      "regex": "\\bnew\\s+\\w+",
+      "description": "Raw new operator",
+      "modernization": "Use smart pointers (std::unique_ptr, RefPtr)"
+    },
+    "out_parameter": {
+      "count": 5027,
+      "regex": "\\w+\\s*\\(\\s*[^)]*\\w+\\s*\\*\\*\\s*\\w+\\s*[,)]",
+      "description": "Out parameter",
+      "modernization": "Return value or result type"
+    },
+    "addref_call": {
+      "count": 1475,
+      "regex": "(NS_ADDREF|AddRef)\\s*\\(",
+      "description": "Manual AddRef call",
+      "modernization": "Use RefPtr or nsCOMPtr"
+    },
+    "release_call": {
+      "count": 1357,
+      "regex": "(NS_RELEASE|Release)\\s*\\(",
+      "description": "Manual Release call",
+      "modernization": "Use RefPtr or nsCOMPtr"
+    },
+    "query_interface": {
+      "count": 3772,
+      "regex": "QueryInterface\\s*\\(",
+      "description": "Manual QueryInterface call",
+      "modernization": "Use do_QueryInterface or as<T>()"
+    },
+    "error_check": {
+      "count": 6510,
+      "regex": "(NS_FAILED|NS_SUCCEEDED)\\s*\\(",
+      "description": "Error code check",
+      "modernization": "Use result types with explicit success/failure"
+    },
+    "multiple_out_params": {
+      "count": 2820,
+      "regex": "\\w+\\s*\\([^)]*\\w+\\s*\\&[^,)]*,[^)]*\\w+\\s*\\&",
+      "description": "Multiple out parameters",
+      "modernization": "Return std::tuple or custom struct"
+    },
+    "manual_deallocation": {
+      "count": 286,
+      "regex": "\\bfree\\s*\\(",
+      "description": "Manual memory deallocation",
+      "modernization": "Replace with smart pointers or RAII pattern"
+    },
+    "raw_delete": {
+      "count": 957,
+      "regex": "\\bdelete\\s+\\w+",
+      "description": "Raw delete operator",
+      "modernization": "Use smart pointers (std::unique_ptr, RefPtr)"
+    },
+    "array_new": {
+      "count": 247,
+      "regex": "\\bnew\\s+\\w+\\s*\\[",
+      "description": "Raw array allocation",
+      "modernization": "Use std::vector or other container"
+    },
+    "array_delete": {
+      "count": 363,
+      "regex": "\\bdelete\\s*\\[\\s*\\]",
+      "description": "Raw array deallocation",
+      "modernization": "Use std::vector or other container"
+    },
+    "manual_allocation": {
+      "count": 137,
+      "regex": "\\b(malloc|calloc|realloc)\\s*\\(",
+      "description": "Manual memory allocation",
+      "modernization": "Replace with smart pointers or RAII pattern"
+    },
+    "default_opportunity": {
+      "count": 370,
+      "regex": "\\w+::\\~?\\w+\\s*\\(\\s*\\)\\s*\\{\\s*\\}",
+      "description": "Empty constructor/destructor",
+      "modernization": "Use = default"
+    }
+  },
+  "components": {
+    "xpcom": {
+      "file_count": 404,
+      "patterns": {
+        "error_code_return": 2022,
+        "c_style_cast": 1744,
+        "null_check": 1074,
+        "raw_new": 645,
+        "out_parameter": 587,
+        "addref_call": 301,
+        "release_call": 300,
+        "query_interface": 393,
+        "error_check": 1429,
+        "multiple_out_params": 90,
+        "manual_deallocation": 142,
+        "raw_delete": 135,
+        "array_new": 72,
+        "array_delete": 96,
+        "manual_allocation": 67,
+        "default_opportunity": 38
+      }
+    },
+    "dom": {
+      "file_count": 46,
+      "patterns": {
+        "error_code_return": 612,
+        "c_style_cast": 57,
+        "out_parameter": 301,
+        "multiple_out_params": 18,
+        "error_check": 210,
+        "raw_new": 83,
+        "addref_call": 62,
+        "query_interface": 231,
+        "default_opportunity": 24,
+        "manual_deallocation": 2,
+        "release_call": 10,
+        "null_check": 182,
+        "raw_delete": 5,
+        "array_delete": 4
+      }
+    },
+    "layout": {
+      "file_count": 406,
+      "patterns": {
+        "error_code_return": 3960,
+        "out_parameter": 1521,
+        "query_interface": 1252,
+        "null_check": 1620,
+        "raw_new": 867,
+        "error_check": 1556,
+        "addref_call": 214,
+        "release_call": 395,
+        "multiple_out_params": 1471,
+        "array_new": 60,
+        "array_delete": 86,
+        "default_opportunity": 110,
+        "c_style_cast": 1161,
+        "raw_delete": 234,
+        "manual_deallocation": 3,
+        "manual_allocation": 2
+      }
+    },
+    "gfx": {
+      "file_count": 265,
+      "patterns": {
+        "out_parameter": 261,
+        "raw_new": 642,
+        "array_new": 92,
+        "array_delete": 136,
+        "error_check": 483,
+        "c_style_cast": 958,
+        "addref_call": 99,
+        "release_call": 63,
+        "error_code_return": 2343,
+        "multiple_out_params": 405,
+        "null_check": 911,
+        "raw_delete": 251,
+        "query_interface": 84,
+        "default_opportunity": 36,
+        "manual_allocation": 67,
+        "manual_deallocation": 112
+      }
+    },
+    "content": {
+      "file_count": 448,
+      "patterns": {
+        "raw_new": 1008,
+        "error_code_return": 6549,
+        "error_check": 2832,
+        "c_style_cast": 1178,
+        "out_parameter": 2357,
+        "addref_call": 799,
+        "release_call": 589,
+        "query_interface": 1812,
+        "null_check": 2179,
+        "default_opportunity": 162,
+        "multiple_out_params": 836,
+        "raw_delete": 332,
+        "array_delete": 41,
+        "manual_deallocation": 27,
+        "array_new": 23,
+        "manual_allocation": 1
+      }
+    }
+  },
+  "top_files": [
+    {
+      "filepath": "content/base/src/nsSelection.cpp",
+      "total": 1204,
+      "component": "content",
+      "patterns": [
+        [
+          "raw_new",
+          49
+        ],
+        [
+          "raw_delete",
+          4
+        ],
+        [
+          "array_delete",
+          2
+        ],
+        [
+          "error_code_return",
+          372
+        ],
+        [
+          "error_check",
+          355
+        ],
+        [
+          "c_style_cast",
+          23
+        ],
+        [
+          "out_parameter",
+          77
+        ],
+        [
+          "addref_call",
+          25
+        ],
+        [
+          "release_call",
+          1
+        ],
+        [
+          "query_interface",
+          80
+        ],
+        [
+          "null_check",
+          211
+        ],
+        [
+          "default_opportunity",
+          1
+        ],
+        [
+          "multiple_out_params",
+          4
+        ]
+      ]
+    },
+    {
+      "filepath": "content/xul/document/src/nsXULDocument.cpp",
+      "total": 1115,
+      "component": "content",
+      "patterns": [
+        [
+          "manual_deallocation",
+          4
+        ],
+        [
+          "raw_new",
+          25
+        ],
+        [
+          "raw_delete",
+          8
+        ],
+        [
+          "error_code_return",
+          354
+        ],
+        [
+          "error_check",
+          301
+        ],
+        [
+          "c_style_cast",
+          47
+        ],
+        [
+          "out_parameter",
+          89
+        ],
+        [
+          "addref_call",
+          39
+        ],
+        [
+          "release_call",
+          30
+        ],
+        [
+          "query_interface",
+          80
+        ],
+        [
+          "null_check",
+          125
+        ],
+        [
+          "default_opportunity",
+          1
+        ],
+        [
+          "multiple_out_params",
+          12
+        ]
+      ]
+    },
+    {
+      "filepath": "layout/html/style/src/nsCSSFrameConstructor.cpp",
+      "total": 763,
+      "component": "layout",
+      "patterns": [
+        [
+          "raw_new",
+          79
+        ],
+        [
+          "raw_delete",
+          4
+        ],
+        [
+          "error_code_return",
+          110
+        ],
+        [
+          "error_check",
+          136
+        ],
+        [
+          "c_style_cast",
+          48
+        ],
+        [
+          "out_parameter",
+          93
+        ],
+        [
+          "addref_call",
+          2
+        ],
+        [
+          "release_call",
+          18
+        ],
+        [
+          "query_interface",
+          89
+        ],
+        [
+          "null_check",
+          137
+        ],
+        [
+          "multiple_out_params",
+          47
+        ]
+      ]
+    },
+    {
+      "filepath": "layout/html/base/src/nsPresShell.cpp",
+      "total": 703,
+      "component": "layout",
+      "patterns": [
+        [
+          "raw_new",
+          37
+        ],
+        [
+          "raw_delete",
+          13
+        ],
+        [
+          "array_new",
+          4
+        ],
+        [
+          "array_delete",
+          4
+        ],
+        [
+          "error_code_return",
+          184
+        ],
+        [
+          "error_check",
+          135
+        ],
+        [
+          "c_style_cast",
+          81
+        ],
+        [
+          "out_parameter",
+          60
+        ],
+        [
+          "addref_call",
+          11
+        ],
+        [
+          "release_call",
+          22
+        ],
+        [
+          "query_interface",
+          72
+        ],
+        [
+          "null_check",
+          74
+        ],
+        [
+          "default_opportunity",
+          1
+        ],
+        [
+          "multiple_out_params",
+          5
+        ]
+      ]
+    },
+    {
+      "filepath": "content/xul/content/src/nsXULElement.cpp",
+      "total": 651,
+      "component": "content",
+      "patterns": [
+        [
+          "manual_deallocation",
+          1
+        ],
+        [
+          "raw_new",
+          10
+        ],
+        [
+          "raw_delete",
+          2
+        ],
+        [
+          "error_code_return",
+          254
+        ],
+        [
+          "error_check",
+          134
+        ],
+        [
+          "c_style_cast",
+          18
+        ],
+        [
+          "out_parameter",
+          38
+        ],
+        [
+          "addref_call",
+          25
+        ],
+        [
+          "release_call",
+          11
+        ],
+        [
+          "query_interface",
+          74
+        ],
+        [
+          "null_check",
+          73
+        ],
+        [
+          "multiple_out_params",
+          11
+        ]
+      ]
+    },
+    {
+      "filepath": "content/base/src/nsDocumentViewer.cpp",
+      "total": 645,
+      "component": "content",
+      "patterns": [
+        [
+          "manual_deallocation",
+          1
+        ],
+        [
+          "raw_new",
+          34
+        ],
+        [
+          "raw_delete",
+          17
+        ],
+        [
+          "error_code_return",
+          175
+        ],
+        [
+          "error_check",
+          129
+        ],
+        [
+          "c_style_cast",
+          48
+        ],
+        [
+          "out_parameter",
+          26
+        ],
+        [
+          "addref_call",
+          11
+        ],
+        [
+          "release_call",
+          8
+        ],
+        [
+          "query_interface",
+          119
+        ],
+        [
+          "null_check",
+          71
+        ],
+        [
+          "default_opportunity",
+          1
+        ],
+        [
+          "multiple_out_params",
+          5
+        ]
+      ]
+    },
+    {
+      "filepath": "dom/src/base/nsGlobalWindow.cpp",
+      "total": 567,
+      "component": "dom",
+      "patterns": [
+        [
+          "manual_deallocation",
+          1
+        ],
+        [
+          "raw_new",
+          29
+        ],
+        [
+          "raw_delete",
+          2
+        ],
+        [
+          "error_code_return",
+          211
+        ],
+        [
+          "error_check",
+          66
+        ],
+        [
+          "c_style_cast",
+          17
+        ],
+        [
+          "out_parameter",
+          61
+        ],
+        [
+          "addref_call",
+          27
+        ],
+        [
+          "query_interface",
+          73
+        ],
+        [
+          "null_check",
+          71
+        ],
+        [
+          "multiple_out_params",
+          9
+        ]
+      ]
+    },
+    {
+      "filepath": "layout/html/base/src/nsFrame.cpp",
+      "total": 517,
+      "component": "layout",
+      "patterns": [
+        [
+          "raw_new",
+          11
+        ],
+        [
+          "raw_delete",
+          9
+        ],
+        [
+          "error_code_return",
+          141
+        ],
+        [
+          "error_check",
+          176
+        ],
+        [
+          "c_style_cast",
+          40
+        ],
+        [
+          "out_parameter",
+          29
+        ],
+        [
+          "addref_call",
+          3
+        ],
+        [
+          "release_call",
+          8
+        ],
+        [
+          "query_interface",
+          38
+        ],
+        [
+          "null_check",
+          48
+        ],
+        [
+          "multiple_out_params",
+          14
+        ]
+      ]
+    },
+    {
+      "filepath": "content/base/src/nsDocument.cpp",
+      "total": 507,
+      "component": "content",
+      "patterns": [
+        [
+          "raw_new",
+          32
+        ],
+        [
+          "raw_delete",
+          4
+        ],
+        [
+          "error_code_return",
+          172
+        ],
+        [
+          "error_check",
+          23
+        ],
+        [
+          "c_style_cast",
+          72
+        ],
+        [
+          "out_parameter",
+          72
+        ],
+        [
+          "addref_call",
+          22
+        ],
+        [
+          "release_call",
+          9
+        ],
+        [
+          "query_interface",
+          54
+        ],
+        [
+          "null_check",
+          32
+        ],
+        [
+          "default_opportunity",
+          1
+        ],
+        [
+          "multiple_out_params",
+          14
+        ]
+      ]
+    },
+    {
+      "filepath": "content/base/src/nsRange.cpp",
+      "total": 474,
+      "component": "content",
+      "patterns": [
+        [
+          "manual_deallocation",
+          1
+        ],
+        [
+          "raw_new",
+          14
+        ],
+        [
+          "raw_delete",
+          9
+        ],
+        [
+          "error_code_return",
+          156
+        ],
+        [
+          "error_check",
+          134
+        ],
+        [
+          "c_style_cast",
+          14
+        ],
+        [
+          "out_parameter",
+          14
+        ],
+        [
+          "release_call",
+          2
+        ],
+        [
+          "query_interface",
+          52
+        ],
+        [
+          "null_check",
+          77
+        ],
+        [
+          "default_opportunity",
+          1
+        ]
+      ]
+    },
+    {
+      "filepath": "content/html/document/src/nsHTMLDocument.cpp",
+      "total": 441,
+      "component": "content",
+      "patterns": [
+        [
+          "manual_deallocation",
+          1
+        ],
+        [
+          "raw_new",
+          24
+        ],
+        [
+          "raw_delete",
+          8
+        ],
+        [
+          "error_code_return",
+          119
+        ],
+        [
+          "error_check",
+          94
+        ],
+        [
+          "c_style_cast",
+          19
+        ],
+        [
+          "out_parameter",
+          51
+        ],
+        [
+          "addref_call",
+          24
+        ],
+        [
+          "release_call",
+          19
+        ],
+        [
+          "query_interface",
+          41
+        ],
+        [
+          "null_check",
+          25
+        ],
+        [
+          "multiple_out_params",
+          16
+        ]
+      ]
+    },
+    {
+      "filepath": "xpcom/components/nsComponentManager.cpp",
+      "total": 434,
+      "component": "xpcom",
+      "patterns": [
+        [
+          "manual_deallocation",
+          4
+        ],
+        [
+          "raw_new",
+          19
+        ],
+        [
+          "raw_delete",
+          8
+        ],
+        [
+          "array_delete",
+          10
+        ],
+        [
+          "error_code_return",
+          118
+        ],
+        [
+          "error_check",
+          124
+        ],
+        [
+          "c_style_cast",
+          34
+        ],
+        [
+          "out_parameter",
+          25
+        ],
+        [
+          "addref_call",
+          13
+        ],
+        [
+          "release_call",
+          3
+        ],
+        [
+          "query_interface",
+          12
+        ],
+        [
+          "null_check",
+          57
+        ],
+        [
+          "multiple_out_params",
+          7
+        ]
+      ]
+    },
+    {
+      "filepath": "content/events/src/nsEventStateManager.cpp",
+      "total": 427,
+      "component": "content",
+      "patterns": [
+        [
+          "raw_new",
+          14
+        ],
+        [
+          "raw_delete",
+          1
+        ],
+        [
+          "error_code_return",
+          88
+        ],
+        [
+          "error_check",
+          30
+        ],
+        [
+          "c_style_cast",
+          64
+        ],
+        [
+          "out_parameter",
+          11
+        ],
+        [
+          "addref_call",
+          22
+        ],
+        [
+          "release_call",
+          11
+        ],
+        [
+          "query_interface",
+          96
+        ],
+        [
+          "null_check",
+          90
+        ]
+      ]
+    },
+    {
+      "filepath": "layout/html/table/src/nsTableFrame.cpp",
+      "total": 422,
+      "component": "layout",
+      "patterns": [
+        [
+          "raw_new",
+          47
+        ],
+        [
+          "raw_delete",
+          2
+        ],
+        [
+          "array_new",
+          3
+        ],
+        [
+          "array_delete",
+          3
+        ],
+        [
+          "error_code_return",
+          37
+        ],
+        [
+          "error_check",
+          12
+        ],
+        [
+          "c_style_cast",
+          137
+        ],
+        [
+          "out_parameter",
+          11
+        ],
+        [
+          "addref_call",
+          3
+        ],
+        [
+          "release_call",
+          4
+        ],
+        [
+          "query_interface",
+          4
+        ],
+        [
+          "null_check",
+          103
+        ],
+        [
+          "multiple_out_params",
+          56
+        ]
+      ]
+    },
+    {
+      "filepath": "layout/html/forms/src/nsGfxTextControlFrame2.cpp",
+      "total": 416,
+      "component": "layout",
+      "patterns": [
+        [
+          "raw_new",
+          9
+        ],
+        [
+          "raw_delete",
+          4
+        ],
+        [
+          "error_code_return",
+          148
+        ],
+        [
+          "error_check",
+          82
+        ],
+        [
+          "c_style_cast",
+          6
+        ],
+        [
+          "out_parameter",
+          29
+        ],
+        [
+          "addref_call",
+          2
+        ],
+        [
+          "release_call",
+          8
+        ],
+        [
+          "query_interface",
+          48
+        ],
+        [
+          "null_check",
+          70
+        ],
+        [
+          "default_opportunity",
+          1
+        ],
+        [
+          "multiple_out_params",
+          9
+        ]
+      ]
+    },
+    {
+      "filepath": "content/base/src/nsGenericElement.cpp",
+      "total": 408,
+      "component": "content",
+      "patterns": [
+        [
+          "raw_new",
+          25
+        ],
+        [
+          "raw_delete",
+          9
+        ],
+        [
+          "error_code_return",
+          115
+        ],
+        [
+          "error_check",
+          34
+        ],
+        [
+          "c_style_cast",
+          33
+        ],
+        [
+          "out_parameter",
+          29
+        ],
+        [
+          "addref_call",
+          21
+        ],
+        [
+          "release_call",
+          31
+        ],
+        [
+          "query_interface",
+          68
+        ],
+        [
+          "null_check",
+          26
+        ],
+        [
+          "default_opportunity",
+          2
+        ],
+        [
+          "multiple_out_params",
+          15
+        ]
+      ]
+    },
+    {
+      "filepath": "layout/html/base/src/nsTextFrame.cpp",
+      "total": 380,
+      "component": "layout",
+      "patterns": [
+        [
+          "raw_new",
+          12
+        ],
+        [
+          "raw_delete",
+          14
+        ],
+        [
+          "array_new",
+          7
+        ],
+        [
+          "array_delete",
+          5
+        ],
+        [
+          "error_code_return",
+          83
+        ],
+        [
+          "error_check",
+          73
+        ],
+        [
+          "c_style_cast",
+          31
+        ],
+        [
+          "out_parameter",
+          21
+        ],
+        [
+          "addref_call",
+          7
+        ],
+        [
+          "release_call",
+          15
+        ],
+        [
+          "query_interface",
+          18
+        ],
+        [
+          "null_check",
+          49
+        ],
+        [
+          "multiple_out_params",
+          45
+        ]
+      ]
+    },
+    {
+      "filepath": "gfx/src/windows/nsFontMetricsWin.cpp",
+      "total": 378,
+      "component": "gfx",
+      "patterns": [
+        [
+          "raw_new",
+          30
+        ],
+        [
+          "raw_delete",
+          24
+        ],
+        [
+          "array_new",
+          9
+        ],
+        [
+          "array_delete",
+          26
+        ],
+        [
+          "error_code_return",
+          90
+        ],
+        [
+          "error_check",
+          24
+        ],
+        [
+          "c_style_cast",
+          77
+        ],
+        [
+          "out_parameter",
+          6
+        ],
+        [
+          "addref_call",
+          2
+        ],
+        [
+          "release_call",
+          2
+        ],
+        [
+          "query_interface",
+          2
+        ],
+        [
+          "null_check",
+          77
+        ],
+        [
+          "default_opportunity",
+          6
+        ],
+        [
+          "multiple_out_params",
+          3
+        ]
+      ]
+    },
+    {
+      "filepath": "content/html/content/src/nsGenericHTMLElement.cpp",
+      "total": 376,
+      "component": "content",
+      "patterns": [
+        [
+          "raw_new",
+          11
+        ],
+        [
+          "raw_delete",
+          4
+        ],
+        [
+          "error_code_return",
+          96
+        ],
+        [
+          "error_check",
+          54
+        ],
+        [
+          "c_style_cast",
+          16
+        ],
+        [
+          "out_parameter",
+          22
+        ],
+        [
+          "addref_call",
+          17
+        ],
+        [
+          "release_call",
+          14
+        ],
+        [
+          "query_interface",
+          55
+        ],
+        [
+          "null_check",
+          39
+        ],
+        [
+          "default_opportunity",
+          3
+        ],
+        [
+          "multiple_out_params",
+          45
+        ]
+      ]
+    },
+    {
+      "filepath": "content/html/style/src/nsCSSStyleSheet.cpp",
+      "total": 372,
+      "component": "content",
+      "patterns": [
+        [
+          "raw_new",
+          20
+        ],
+        [
+          "raw_delete",
+          6
+        ],
+        [
+          "array_new",
+          1
+        ],
+        [
+          "array_delete",
+          3
+        ],
+        [
+          "error_code_return",
+          92
+        ],
+        [
+          "error_check",
+          36
+        ],
+        [
+          "c_style_cast",
+          95
+        ],
+        [
+          "out_parameter",
+          16
+        ],
+        [
+          "addref_call",
+          32
+        ],
+        [
+          "release_call",
+          26
+        ],
+        [
+          "query_interface",
+          23
+        ],
+        [
+          "null_check",
+          18
+        ],
+        [
+          "default_opportunity",
+          3
+        ],
+        [
+          "multiple_out_params",
+          1
+        ]
+      ]
+    }
+  ]
+}

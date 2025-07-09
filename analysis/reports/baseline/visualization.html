@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mozilla 1.0 Modernization Baseline</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin-bottom: 30px;
+        }
+        .chart-row {
+            display: flex;
+            margin-bottom: 30px;
+        }
+        .chart-half {
+            flex: 1;
+            margin: 0 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mozilla 1.0 Codebase Modernization Baseline</h1>
+        <p>This visualization shows the baseline measurements of modernization opportunities across major components.</p>
+        
+        <h2>Overall Statistics</h2>
+        <div class="chart-container">
+            <canvas id="overallPatterns"></canvas>
+        </div>
+        
+        <div class="chart-row">
+            <div class="chart-half">
+                <h2>Opportunities by Component</h2>
+                <div class="chart-container">
+                    <canvas id="componentChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-half">
+                <h2>Top Patterns by Component</h2>
+                <div class="chart-container">
+                    <canvas id="patternsByComponent"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Top 10 Files with Most Modernization Opportunities</h2>
+        <table id="topFiles">
+            <thead>
+                <tr>
+                    <th>File</th>
+                    <th>Component</th>
+                    <th>Total Opportunities</th>
+                    <th>Top Patterns</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>content/base/src/nsSelection.cpp</td>
+                    <td>content</td>
+                    <td>1204</td>
+                    <td>error_code_return (372), error_check (355), null_check (211)</td>
+                </tr>
+                <tr>
+                    <td>content/xul/document/src/nsXULDocument.cpp</td>
+                    <td>content</td>
+                    <td>1115</td>
+                    <td>error_code_return (354), error_check (301), null_check (125)</td>
+                </tr>
+                <tr>
+                    <td>layout/html/style/src/nsCSSFrameConstructor.cpp</td>
+                    <td>layout</td>
+                    <td>763</td>
+                    <td>null_check (137), error_check (136), error_code_return (110)</td>
+                </tr>
+                <tr>
+                    <td>layout/html/base/src/nsPresShell.cpp</td>
+                    <td>layout</td>
+                    <td>703</td>
+                    <td>error_code_return (184), error_check (135), c_style_cast (81)</td>
+                </tr>
+                <tr>
+                    <td>content/xul/content/src/nsXULElement.cpp</td>
+                    <td>content</td>
+                    <td>651</td>
+                    <td>error_code_return (254), error_check (134), query_interface (74)</td>
+                </tr>
+                <tr>
+                    <td>content/base/src/nsDocumentViewer.cpp</td>
+                    <td>content</td>
+                    <td>645</td>
+                    <td>error_code_return (175), error_check (129), query_interface (119)</td>
+                </tr>
+                <tr>
+                    <td>dom/src/base/nsGlobalWindow.cpp</td>
+                    <td>dom</td>
+                    <td>567</td>
+                    <td>error_code_return (211), query_interface (73), null_check (71)</td>
+                </tr>
+                <tr>
+                    <td>layout/html/base/src/nsFrame.cpp</td>
+                    <td>layout</td>
+                    <td>517</td>
+                    <td>error_check (176), error_code_return (141), null_check (48)</td>
+                </tr>
+                <tr>
+                    <td>content/base/src/nsDocument.cpp</td>
+                    <td>content</td>
+                    <td>507</td>
+                    <td>error_code_return (172), c_style_cast (72), out_parameter (72)</td>
+                </tr>
+                <tr>
+                    <td>content/base/src/nsRange.cpp</td>
+                    <td>content</td>
+                    <td>474</td>
+                    <td>error_code_return (156), error_check (134), null_check (77)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Data for overall patterns
+        const patternData = {
+            labels: [
+                'Error Code Return', 
+                'Error Check', 
+                'Null Check', 
+                'C-style Cast', 
+                'Out Parameter',
+                'QueryInterface',
+                'Raw New',
+                'Multiple Out Params'
+            ],
+            datasets: [{
+                label: 'Occurrences',
+                data: [15486, 6510, 5966, 5098, 5027, 3772, 3245, 2820],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.7)',
+                    'rgba(54, 162, 235, 0.7)',
+                    'rgba(255, 206, 86, 0.7)',
+                    'rgba(75, 192, 192, 0.7)',
+                    'rgba(153, 102, 255, 0.7)',
+                    'rgba(255, 159, 64, 0.7)',
+                    'rgba(199, 199, 199, 0.7)',
+                    'rgba(83, 102, 255, 0.7)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(199, 199, 199, 1)',
+                    'rgba(83, 102, 255, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        // Data for component breakdown
+        const componentData = {
+            labels: ['Content', 'Layout', 'XPCOM', 'GFX', 'DOM'],
+            datasets: [{
+                label: 'Files with Modernization Opportunities',
+                data: [448, 406, 404, 265, 46],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.7)',
+                    'rgba(54, 162, 235, 0.7)',
+                    'rgba(255, 206, 86, 0.7)',
+                    'rgba(75, 192, 192, 0.7)',
+                    'rgba(153, 102, 255, 0.7)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        // Data for patterns by component
+        const patternsByComponentData = {
+            labels: ['Content', 'Layout', 'XPCOM', 'GFX', 'DOM'],
+            datasets: [
+                {
+                    label: 'Error Code Return',
+                    data: [6549, 3960, 2022, 2343, 612],
+                    backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Error Check',
+                    data: [2832, 1556, 1429, 483, 210],
+                    backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Null Check',
+                    data: [2179, 1620, 1074, 911, 182],
+                    backgroundColor: 'rgba(255, 206, 86, 0.7)',
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    borderWidth: 1
+                }
+            ]
+        };
+
+        // Create charts
+        window.onload = function() {
+            // Overall patterns chart
+            const overallCtx = document.getElementById('overallPatterns').getContext('2d');
+            new Chart(overallCtx, {
+                type: 'bar',
+                data: patternData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Most Common Modernization Patterns'
+                        },
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Occurrences'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Component chart
+            const componentCtx = document.getElementById('componentChart').getContext('2d');
+            new Chart(componentCtx, {
+                type: 'pie',
+                data: componentData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Files by Component'
+                        }
+                    }
+                }
+            });
+
+            // Patterns by component chart
+            const patternsByComponentCtx = document.getElementById('patternsByComponent').getContext('2d');
+            new Chart(patternsByComponentCtx, {
+                type: 'bar',
+                data: patternsByComponentData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Top 3 Patterns by Component'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Occurrences'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Component'
+                            }
+                        }
+                    }
+                }
+            });
+        };
+    </script>
+</body>
+</html> 
