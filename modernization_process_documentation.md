@@ -606,3 +606,42 @@ For detailed baseline information, see:
 - [Baseline Summary](analysis/reports/baseline/summary.md)
 - [Baseline Visualization](analysis/reports/baseline/visualization.html)
 - [Full Baseline Report](analysis/reports/baseline/modernization_opportunities.md) 
+
+## Modernization Templates
+
+### Overview
+
+We've developed templates for the most common modernization patterns identified in our baseline measurements. These templates provide detailed guides on how to apply specific modernization patterns consistently across the codebase.
+
+### Available Templates
+
+1. **Error Code Returns → Result Types**
+   - Replaces error code returns and out parameters with a Result type
+   - Addresses the most common pattern found in our baseline (15,486 occurrences)
+   - Provides a cleaner, more explicit error handling mechanism
+
+2. **Raw Pointers → Smart Pointers**
+   - Replaces raw pointers with appropriate smart pointers
+   - Addresses memory management issues (3,245 raw new occurrences)
+   - Improves memory safety and reduces the risk of leaks
+
+### Template Structure
+
+Each template includes:
+
+1. **Pattern Overview**: Description of the problem and solution
+2. **Before and After Example**: Concrete code examples showing the transformation
+3. **Step-by-Step Implementation Guide**: Detailed instructions for applying the pattern
+4. **Compatibility Considerations**: Notes on maintaining compatibility with existing code
+5. **Benefits**: Explanation of the advantages of the modernized pattern
+
+### Application Strategy
+
+We'll apply these templates in the following order:
+
+1. Start with the most common patterns (error code returns, raw pointers)
+2. Focus on high-impact components identified in our baseline
+3. Begin with the files that have the most modernization opportunities
+4. Ensure backward compatibility through appropriate compatibility layers
+
+For the complete set of templates, see [Modernization Templates](modernization_templates/README.md) 
