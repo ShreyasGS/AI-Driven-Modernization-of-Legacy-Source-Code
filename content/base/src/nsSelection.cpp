@@ -89,6 +89,14 @@ static NS_DEFINE_CID(kFrameTraversalCID, NS_FRAMETRAVERSAL_CID);
 #include "nsIPresShell.h"
 #include "nsICaret.h"
 
+// Include modernized header
+#include "modernized_nsSelection.h"
+#include "modernized_nsSelection_Result.h"
+
+using mozilla::Result;
+using mozilla::Ok;
+using mozilla::Err;
+
 
 // included for view scrolling
 #include "nsIViewManager.h"
@@ -236,10 +244,14 @@ public:
   PRInt32      FetchOriginalAnchorOffset();
 
   nsIDOMNode*  FetchFocusNode();   //where is the carret
+  Result<nsCOMPtr<nsIDOMNode>, nsresult> FetchFocusNodeModern(); // modernized version
   PRInt32      FetchFocusOffset();
+  Result<PRInt32, nsresult> FetchFocusOffsetModern(); // modernized version
 
   nsIDOMNode*  FetchStartParent(nsIDOMRange *aRange);   //skip all the com stuff and give me the start/end
+  Result<nsCOMPtr<nsIDOMNode>, nsresult> FetchStartParentModern(nsIDOMRange *aRange); // modernized version
   PRInt32      FetchStartOffset(nsIDOMRange *aRange);
+  Result<PRInt32, nsresult> FetchStartOffsetModern(nsIDOMRange *aRange); // modernized version
   nsIDOMNode*  FetchEndParent(nsIDOMRange *aRange);     //skip all the com stuff and give me the start/end
   PRInt32      FetchEndOffset(nsIDOMRange *aRange);
 
@@ -4682,20 +4694,37 @@ nsTypedSelection::FetchOriginalAnchorOffset()
 nsIDOMNode*
 nsTypedSelection::FetchFocusNode()
 {   //where is the carret
-  nsCOMPtr<nsIDOMNode>returnval;
-  GetFocusNode(getter_AddRefs(returnval));//this queries
-  return returnval;
+  return FetchFocusNodeModern().unwrapOr(nullptr);
 }//at end it will release, no addreff was called
+
+Result<nsCOMPtr<nsIDOMNode>, nsresult>
+nsTypedSelection::FetchFocusNodeModern()
+{   //where is the carret
+  nsCOMPtr<nsIDOMNode> returnval;
+  nsresult rv = GetFocusNode(getter_AddRefs(returnval));
+  if (NS_FAILED(rv)) {
+    return Err(rv);
+  }
+  return Ok(returnval);
+}
 
 
 
 PRInt32
 nsTypedSelection::FetchFocusOffset()
 {
+  return FetchFocusOffsetModern().unwrapOr(0);
+}
+
+Result<PRInt32, nsresult>
+nsTypedSelection::FetchFocusOffsetModern()
+{
   PRInt32 returnval;
-  if (NS_SUCCEEDED(GetFocusOffset(&returnval)))//this queries
-    return returnval;
-  return NS_OK;
+  nsresult rv = GetFocusOffset(&returnval);
+  if (NS_FAILED(rv)) {
+    return Err(rv);
+  }
+  return Ok(returnval);
 }
 
 
@@ -4703,11 +4732,23 @@ nsTypedSelection::FetchFocusOffset()
 nsIDOMNode*
 nsTypedSelection::FetchStartParent(nsIDOMRange *aRange)   //skip all the com stuff and give me the start/end
 {
-  if (!aRange)
-    return nsnull;
+  return FetchStartParentModern(aRange).unwrapOr(nullptr);
+}
+
+Result<nsCOMPtr<nsIDOMNode>, nsresult>
+nsTypedSelection::FetchStartParentModern(nsIDOMRange *aRange)
+{
+  if (!aRange) {
+    return Err(NS_ERROR_INVALID_ARG);
+  }
+  
   nsCOMPtr<nsIDOMNode> returnval;
-  aRange->GetStartContainer(getter_AddRefs(returnval));
-  return returnval;
+  nsresult rv = aRange->GetStartContainer(getter_AddRefs(returnval));
+  if (NS_FAILED(rv)) {
+    return Err(rv);
+  }
+  
+  return Ok(returnval);
 }
 
 
@@ -4715,12 +4756,23 @@ nsTypedSelection::FetchStartParent(nsIDOMRange *aRange)   //skip all the com stu
 PRInt32
 nsTypedSelection::FetchStartOffset(nsIDOMRange *aRange)
 {
-  if (!aRange)
-    return nsnull;
+  return FetchStartOffsetModern(aRange).unwrapOr(0);
+}
+
+Result<PRInt32, nsresult>
+nsTypedSelection::FetchStartOffsetModern(nsIDOMRange *aRange)
+{
+  if (!aRange) {
+    return Err(NS_ERROR_INVALID_ARG);
+  }
+  
   PRInt32 returnval;
-  if (NS_SUCCEEDED(aRange->GetStartOffset(&returnval)))
-    return returnval;
-  return 0;
+  nsresult rv = aRange->GetStartOffset(&returnval);
+  if (NS_FAILED(rv)) {
+    return Err(rv);
+  }
+  
+  return Ok(returnval);
 }
 
 

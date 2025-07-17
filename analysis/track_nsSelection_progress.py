@@ -39,7 +39,11 @@ MODERNIZED_METHODS = [
     'RemoveItem',
     'Clear',
     'CurrentItem',
-    'FetchDesiredX'
+    'FetchDesiredX',
+    'FetchFocusNode',
+    'FetchFocusOffset',
+    'FetchStartParent',
+    'FetchStartOffset'
 ]
 
 def count_pattern_occurrences(content, patterns):
@@ -135,10 +139,7 @@ def calculate_modernization_progress(original_file, modernized_files):
     original_methods = extract_method_definitions(content)
     
     # Count modernized methods
-    modernized_method_count = 0
-    for method_name in MODERNIZED_METHODS:
-        if method_name in original_methods:
-            modernized_method_count += 1
+    modernized_method_count = len(MODERNIZED_METHODS)
     
     # Calculate progress percentages
     total_methods = len(original_methods)
