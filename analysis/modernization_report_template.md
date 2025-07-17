@@ -1,6 +1,8 @@
 # Mozilla 1.0 Modernization KPI Report
 Generated on: {timestamp}
 
+For detailed explanations of these metrics, see [Documentation Metrics Guide](../documentation_metrics_guide.md).
+
 ## Code Quality Metrics
 - Cyclomatic Complexity: {cyclomatic_complexity}
 - Average Function Length: {avg_function_length} lines
@@ -19,8 +21,6 @@ Generated on: {timestamp}
 - Optional Type Usage: {optional_type_usage}
 
 ## Documentation Metrics
-For detailed explanations of these metrics, see [Documentation Metrics Guide](../documentation_metrics_guide.md).
-
 - Total Documentation Files: {doc_files}
 - Total Documentation Lines: {doc_lines}
 - Modernization Documentation Files: {modernization_doc_files}

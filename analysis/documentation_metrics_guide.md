@@ -56,6 +56,41 @@ The number of occurrences of out parameters (parameters passed by pointer to rec
 ### 8. Null Checks
 The number of occurrences of null checks. These are targets for replacement with std::optional or other safer patterns.
 
+## Code Quality Metrics
+
+Code quality metrics measure the overall health and maintainability of the codebase:
+
+### 1. Cyclomatic Complexity
+Measures the number of linearly independent paths through the code. Lower complexity means code is easier to understand, test, and maintain. Our modernization efforts aim to reduce average complexity by breaking down complex functions into smaller, more focused ones.
+
+### 2. Function Length
+The average and maximum number of lines per function. Shorter functions are generally easier to understand and maintain. Our target is to reduce overly long functions (>100 lines) by refactoring them into smaller, more focused functions.
+
+### 3. Class Cohesion
+Measures how closely the methods within a class are related to each other. Higher cohesion indicates a well-focused class that follows the single responsibility principle. We aim to improve cohesion by splitting large, multi-purpose classes into smaller, more focused ones.
+
+### 4. Comment-to-Code Ratio
+The ratio of comment lines to code lines. While not a direct measure of quality, a healthy ratio indicates well-documented code. Our target is to maintain a ratio between 0.2 and 0.4 (20-40% comments).
+
+## Pattern Reduction Metrics
+
+Pattern reduction metrics track our progress in eliminating problematic patterns from the codebase:
+
+### 1. Raw Pointer Usage Reduction
+Tracks the reduction in the use of raw pointers (T*) in favor of smart pointers and references. Raw pointers can lead to memory leaks, use-after-free, and null dereference issues.
+
+### 2. Manual Memory Management Reduction
+Tracks the reduction in manual new/delete calls in favor of RAII and smart pointers. Manual memory management is error-prone and can lead to memory leaks.
+
+### 3. Global Variable Reduction
+Tracks the reduction in global variables, which can create hidden dependencies and make code harder to test and maintain. We aim to encapsulate globals within appropriate classes or namespaces.
+
+### 4. Macro Usage Reduction
+Tracks the reduction in preprocessor macros in favor of inline functions, constants, and templates. Macros can lead to subtle bugs and are not type-safe.
+
+### 5. C API Usage Reduction
+Tracks the reduction in the use of C-style APIs in favor of C++ equivalents. C APIs often lack type safety and can be more error-prone to use.
+
 ## Importance of Documentation Metrics
 
 These metrics help us track our documentation coverage and ensure that we're properly documenting our modernization efforts at all levels - from high-level plans to specific implementation details in the code itself.
