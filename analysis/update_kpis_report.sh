@@ -22,6 +22,17 @@ CODE_DOC_LINES=$(echo "$CODE_DOC_METRICS" | grep -o "'lines': [0-9]*" | grep -o 
 
 echo "Code documentation metrics: $CODE_DOC_FILES files, $CODE_DOC_LINES lines"
 
+# Get template documentation metrics
+DOC_METRICS=$(cd .. && python3 -c "import sys; sys.path.append('.'); from analysis.measure_modernization_kpis import measure_documentation_metrics; print(measure_documentation_metrics())")
+TEMPLATE_DOC_FILES=$(echo "$DOC_METRICS" | grep -o "'template_doc_files': [0-9]*" | grep -o "[0-9]*")
+TEMPLATE_DOC_LINES=$(echo "$DOC_METRICS" | grep -o "'template_doc_lines': [0-9]*" | grep -o "[0-9]*")
+DOC_FILES=$(echo "$DOC_METRICS" | grep -o "'doc_files': [0-9]*" | grep -o "[0-9]*")
+DOC_LINES=$(echo "$DOC_METRICS" | grep -o "'doc_lines': [0-9]*" | grep -o "[0-9]*")
+MODERNIZATION_DOC_FILES=$(echo "$DOC_METRICS" | grep -o "'modernization_doc_files': [0-9]*" | grep -o "[0-9]*")
+MODERNIZATION_DOC_LINES=$(echo "$DOC_METRICS" | grep -o "'modernization_doc_lines': [0-9]*" | grep -o "[0-9]*")
+
+echo "Template documentation metrics: $TEMPLATE_DOC_FILES files, $TEMPLATE_DOC_LINES lines"
+
 # Check if original file exists
 if [ ! -f "${ORIGINAL_FILE}" ]; then
     echo "Warning: Original file ${ORIGINAL_FILE} not found."
@@ -47,12 +58,12 @@ if [ ! -f "${ORIGINAL_FILE}" ]; then
     "optional_type_usage": 0
   },
   "documentation_metrics": {
-    "doc_files": 43,
-    "doc_lines": 6554,
-    "modernization_doc_files": 26,
-    "modernization_doc_lines": 3377,
-    "template_doc_files": 6,
-    "template_doc_lines": 1285,
+    "doc_files": ${DOC_FILES},
+    "doc_lines": ${DOC_LINES},
+    "modernization_doc_files": ${MODERNIZATION_DOC_FILES},
+    "modernization_doc_lines": ${MODERNIZATION_DOC_LINES},
+    "template_doc_files": ${TEMPLATE_DOC_FILES},
+    "template_doc_lines": ${TEMPLATE_DOC_LINES},
     "code_doc_files": ${CODE_DOC_FILES},
     "code_doc_lines": ${CODE_DOC_LINES}
   }
@@ -62,9 +73,16 @@ else
     echo "Updating KPIs for nsSelection.cpp..."
     python3 "${SCRIPT_DIR}/measure_modernization_kpis.py" .. -f "${ORIGINAL_FILE}" -o "${KPI_FILE}" -d
     
-    # Update the KPI file with code documentation metrics
+    # Update the KPI file with code documentation metrics and template documentation metrics
     TMP_FILE=$(mktemp)
-    jq ".documentation_metrics.code_doc_files = ${CODE_DOC_FILES} | .documentation_metrics.code_doc_lines = ${CODE_DOC_LINES}" "${KPI_FILE}" > "${TMP_FILE}"
+    jq ".documentation_metrics.code_doc_files = ${CODE_DOC_FILES} | 
+        .documentation_metrics.code_doc_lines = ${CODE_DOC_LINES} |
+        .documentation_metrics.template_doc_files = ${TEMPLATE_DOC_FILES} |
+        .documentation_metrics.template_doc_lines = ${TEMPLATE_DOC_LINES} |
+        .documentation_metrics.doc_files = ${DOC_FILES} |
+        .documentation_metrics.doc_lines = ${DOC_LINES} |
+        .documentation_metrics.modernization_doc_files = ${MODERNIZATION_DOC_FILES} |
+        .documentation_metrics.modernization_doc_lines = ${MODERNIZATION_DOC_LINES}" "${KPI_FILE}" > "${TMP_FILE}"
     mv "${TMP_FILE}" "${KPI_FILE}"
 fi
 

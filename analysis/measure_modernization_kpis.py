@@ -156,7 +156,7 @@ def measure_documentation_metrics():
                         if 'modernization_' in file or 'modernized_' in file:
                             doc_metrics['modernization_doc_files'] += 1
                             doc_metrics['modernization_doc_lines'] += lines
-                        elif file_path.startswith('./modernization_templates/'):
+                        elif 'modernization_templates' in file_path:
                             doc_metrics['template_doc_files'] += 1
                             doc_metrics['template_doc_lines'] += lines
                 except Exception as e:
