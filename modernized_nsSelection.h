@@ -21,40 +21,137 @@ class nsIPresContext;
 
 namespace mozilla {
 
-// Modernized version of FetchFocusNode
+/**
+ * FetchFocusNodeModern - Gets the current focus node of the selection
+ *
+ * @param aSelection  The selection object to query
+ * @return            Result containing either the focus node or an error code
+ *                    - On success: nsCOMPtr<nsIDOMNode> containing the focus node (may be nullptr)
+ *                    - On failure: nsresult error code
+ */
 Result<nsCOMPtr<nsIDOMNode>, nsresult> FetchFocusNodeModern(nsTypedSelection* aSelection);
 
-// Modernized version of FetchFocusOffset
+/**
+ * FetchFocusOffsetModern - Gets the current focus offset within the focus node
+ *
+ * @param aSelection  The selection object to query
+ * @return            Result containing either the focus offset or an error code
+ *                    - On success: PRInt32 containing the offset
+ *                    - On failure: nsresult error code
+ */
 Result<PRInt32, nsresult> FetchFocusOffsetModern(nsTypedSelection* aSelection);
 
-// Modernized version of FetchStartParent
+/**
+ * FetchStartParentModern - Gets the parent node of the start point of the specified range
+ *
+ * @param aSelection  The selection object to query
+ * @param aRange      The range to get the start parent from
+ * @return            Result containing either the start parent node or an error code
+ *                    - On success: nsCOMPtr<nsIDOMNode> containing the start parent node (may be nullptr)
+ *                    - On failure: nsresult error code
+ */
 Result<nsCOMPtr<nsIDOMNode>, nsresult> FetchStartParentModern(nsTypedSelection* aSelection, nsIDOMRange* aRange);
 
-// Modernized version of FetchStartOffset
+/**
+ * FetchStartOffsetModern - Gets the offset within the start parent of the specified range
+ *
+ * @param aSelection  The selection object to query
+ * @param aRange      The range to get the start offset from
+ * @return            Result containing either the start offset or an error code
+ *                    - On success: PRInt32 containing the offset
+ *                    - On failure: nsresult error code
+ */
 Result<PRInt32, nsresult> FetchStartOffsetModern(nsTypedSelection* aSelection, nsIDOMRange* aRange);
 
-// Modernized version of GetRangeAt
+/**
+ * GetRangeAtModern - Gets the range at the specified index in the selection
+ *
+ * @param aSelection  The selection object to query
+ * @param aIndex      The index of the range to retrieve
+ * @return            Result containing either the range or an error code
+ *                    - On success: nsCOMPtr<nsIDOMRange> containing the range (may be nullptr)
+ *                    - On failure: nsresult error code (NS_ERROR_INVALID_ARG if index out of bounds)
+ */
 Result<nsCOMPtr<nsIDOMRange>, nsresult> GetRangeAtModern(nsTypedSelection* aSelection, int32_t aIndex);
 
-// Modernized version of GetPresContext
+/**
+ * GetPresContextModern - Gets the presentation context associated with the selection
+ *
+ * @param aSelection  The selection object to query
+ * @return            Result containing either the presentation context or an error code
+ *                    - On success: nsCOMPtr<nsIPresContext> containing the context (may be nullptr)
+ *                    - On failure: nsresult error code
+ */
 Result<nsCOMPtr<nsIPresContext>, nsresult> GetPresContextModern(nsTypedSelection* aSelection);
 
-// Modernized version of GetAnchorNode
+/**
+ * GetAnchorNodeModern - Gets the anchor node of the selection
+ *
+ * The anchor node is where the selection began. This may be different from
+ * the focus node if the selection was made from focus to anchor.
+ *
+ * @param aSelection  The selection object to query
+ * @return            Result containing either the anchor node or an error code
+ *                    - On success: nsCOMPtr<nsIDOMNode> containing the anchor node (may be nullptr)
+ *                    - On failure: nsresult error code
+ */
 Result<nsCOMPtr<nsIDOMNode>, nsresult> GetAnchorNodeModern(nsTypedSelection* aSelection);
 
-// Modernized version of AddItem
+/**
+ * AddItemModern - Adds a range to the selection
+ *
+ * @param aSelection  The selection object to modify
+ * @param aRange      The range to add to the selection
+ * @return            Result containing either void (success) or an error code
+ *                    - On success: void
+ *                    - On failure: nsresult error code (NS_ERROR_NULL_POINTER if aRange is null,
+ *                                 NS_ERROR_FAILURE if mRangeArray is null)
+ */
 Result<void, nsresult> AddItemModern(nsTypedSelection* aSelection, nsIDOMRange* aRange);
 
-// Modernized version of RemoveItem
+/**
+ * RemoveItemModern - Removes a range from the selection
+ *
+ * @param aSelection  The selection object to modify
+ * @param aRange      The range to remove from the selection
+ * @return            Result containing either void (success) or an error code
+ *                    - On success: void
+ *                    - On failure: nsresult error code (NS_ERROR_NULL_POINTER if aRange is null,
+ *                                 NS_ERROR_FAILURE if mRangeArray is null or range not found)
+ */
 Result<void, nsresult> RemoveItemModern(nsTypedSelection* aSelection, nsIDOMRange* aRange);
 
-// Modernized version of Clear
+/**
+ * ClearModern - Clears all ranges from the selection
+ *
+ * @param aSelection   The selection object to modify
+ * @param aPresContext The presentation context (can be null)
+ * @return             Result containing either void (success) or an error code
+ *                     - On success: void
+ *                     - On failure: nsresult error code (NS_ERROR_FAILURE if mRangeArray is null)
+ */
 Result<void, nsresult> ClearModern(nsTypedSelection* aSelection, nsIPresContext* aPresContext);
 
-// Modernized version of CurrentItem
+/**
+ * CurrentItemModern - Gets the current range in the selection
+ *
+ * @param aSelection  The selection object to query
+ * @return            Result containing either the current range or an error code
+ *                    - On success: nsCOMPtr<nsIDOMRange> containing the current range (may be nullptr)
+ *                    - On failure: nsresult error code
+ */
 Result<nsCOMPtr<nsIDOMRange>, nsresult> CurrentItemModern(nsTypedSelection* aSelection);
 
-// Modernized version of FetchDesiredX
+/**
+ * FetchDesiredXModern - Gets the desired X coordinate for vertical navigation
+ *
+ * This is used when moving the caret up and down to maintain the horizontal position.
+ *
+ * @param aSelection  The selection object to query
+ * @return            Result containing either the desired X coordinate or an error code
+ *                    - On success: nscoord containing the X coordinate
+ *                    - On failure: nsresult error code
+ */
 Result<nscoord, nsresult> FetchDesiredXModern(nsTypedSelection* aSelection);
 
 } // namespace mozilla

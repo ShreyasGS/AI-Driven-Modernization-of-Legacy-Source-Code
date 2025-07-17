@@ -47,61 +47,95 @@
  * 4. Consistent naming and formatting
  */
 
-#include "nsCOMPtr.h"
+#include "mozilla/Result.h"
+#include "modernized_nsSelection.h"
+#include "nsTypedSelection.h"
 #include "nsIDOMNode.h"
-#include "nsISelection.h"
-#include "modernized_nsSelection_Result.h"
 
-using mozilla::Result;
-using mozilla::Ok;
-using mozilla::Err;
+// Original implementation:
+/*
+nsIDOMNode*
+nsTypedSelection::FetchFocusNode()
+{   //where is the carret
+  nsCOMPtr<nsIDOMNode>returnval;
+  GetFocusNode(getter_AddRefs(returnval));//this queries
+  return returnval;
+}//at end it will release, no addreff was called
+*/
 
 /**
- * Original implementation:
+ * FetchFocusNodeModern - Gets the current focus node of the selection
  *
- * nsIDOMNode*
- * nsTypedSelection::FetchFocusNode()
- * {   //where is the carret
- *   nsCOMPtr<nsIDOMNode>returnval;
- *   GetFocusNode(getter_AddRefs(returnval));//this queries
- *   return returnval;
- * }//at end it will release, no addreff was called
+ * This modernized implementation uses Result<T> pattern to explicitly handle errors
+ * and provide a more type-safe interface. It properly handles the reference counting
+ * of the DOM node and returns a Result containing either the node or an error code.
+ *
+ * The focus node represents the end point of the selection where the caret is positioned.
+ * It may be different from the anchor node if the selection was made by dragging from
+ * anchor to focus.
+ *
+ * @param aSelection  The selection object to query
+ * @return            Result containing either the focus node or an error code
+ *                    - On success: nsCOMPtr<nsIDOMNode> containing the focus node (may be nullptr)
+ *                    - On failure: nsresult error code from GetFocusNode
  */
-
-/**
- * Modernized implementation:
- * 
- * Returns the focus node (where the caret is) as a Result type that either
- * contains the node or an error code.
- * 
- * @return Result<nsCOMPtr<nsIDOMNode>, nsresult> - Success: The focus node
- *                                                - Error: The error code
- */
-Result<nsCOMPtr<nsIDOMNode>, nsresult>
-nsTypedSelection::FetchFocusNodeModern()
-{   
+mozilla::Result<nsCOMPtr<nsIDOMNode>, nsresult>
+mozilla::FetchFocusNodeModern(nsTypedSelection* aSelection)
+{
+  // Parameter validation
+  if (!aSelection) {
+    return mozilla::Err(NS_ERROR_NULL_POINTER);
+  }
+  
   // Get the focus node
   nsCOMPtr<nsIDOMNode> returnval;
-  nsresult rv = GetFocusNode(getter_AddRefs(returnval));
+  nsresult rv = aSelection->GetFocusNode(getter_AddRefs(returnval));
   
   // Handle error case
   if (NS_FAILED(rv)) {
-    return Err(rv);
+    return mozilla::Err(rv);
   }
   
-  // Return success with the node
-  return Ok(returnval);
+  // Return success with the node (may be nullptr)
+  return mozilla::Ok(returnval);
 }
 
 /**
- * Compatibility wrapper:
- * 
- * Maintains the original API while using the modernized implementation.
- * 
- * @return nsIDOMNode* - The focus node or nullptr on error
+ * FetchFocusNode - Backward compatibility wrapper for FetchFocusNodeModern
+ *
+ * This method maintains the original API while using the modernized implementation
+ * internally. It converts between the Result<nsCOMPtr<nsIDOMNode>> return type
+ * and the traditional raw pointer return type.
+ *
+ * @return  nsIDOMNode* - The focus node or nullptr on failure
+ *          Note: The caller does not need to AddRef this node, as it was already
+ *          AddRef'd for the caller.
  */
 nsIDOMNode*
 nsTypedSelection::FetchFocusNode()
 {
-  return FetchFocusNodeModern().unwrapOr(nullptr);
-} 
+  // Call the modernized implementation
+  auto result = mozilla::FetchFocusNodeModern(this);
+  
+  // Return nullptr on error or the node on success
+  if (result.isErr()) {
+    return nullptr;
+  }
+  
+  // Get the node from the result
+  nsCOMPtr<nsIDOMNode> node = result.unwrap();
+  
+  // Return the raw pointer, forgetting the reference
+  // This matches the behavior of the original implementation
+  return node.forget().get();
+}
+
+/*
+Modernization changes:
+1. Created a new method that returns a Result<nsCOMPtr<nsIDOMNode>> instead of a raw pointer
+2. Added explicit error handling for GetFocusNode failures
+3. Added parameter validation
+4. Used nsCOMPtr for automatic reference counting
+5. Created a backward compatibility wrapper that maintains the original API
+6. Added comprehensive documentation for both functions
+*/ 

@@ -53,6 +53,8 @@ def generate_text_report(kpi_data, progress_data=None, output_file=None):
         report.append(f"- Modernization Documentation Lines: {doc_metrics.get('modernization_doc_lines', 0)}")
         report.append(f"- Template Documentation Files: {doc_metrics.get('template_doc_files', 0)}")
         report.append(f"- Template Documentation Lines: {doc_metrics.get('template_doc_lines', 0)}")
+        report.append(f"- Code Documentation Files: {doc_metrics.get('code_doc_files', 0)}")
+        report.append(f"- Code Documentation Lines: {doc_metrics.get('code_doc_lines', 0)}")
         report.append("")
     
     # Add progress information if available

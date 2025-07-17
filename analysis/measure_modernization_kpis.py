@@ -131,7 +131,9 @@ def measure_documentation_metrics():
         'modernization_doc_files': 0,
         'modernization_doc_lines': 0,
         'template_doc_files': 0,
-        'template_doc_lines': 0
+        'template_doc_lines': 0,
+        'code_doc_files': 0,        # New metric for files with code documentation
+        'code_doc_lines': 0         # New metric for lines of code documentation
     }
     
     # Count documentation files
@@ -160,7 +162,63 @@ def measure_documentation_metrics():
                 except Exception as e:
                     print(f"Error reading documentation file {file_path}: {e}")
     
+    # Count code documentation in implementation files
+    code_doc_metrics = measure_code_documentation()
+    doc_metrics['code_doc_files'] = code_doc_metrics['files']
+    doc_metrics['code_doc_lines'] = code_doc_metrics['lines']
+    
     return doc_metrics
+
+def measure_code_documentation():
+    """Measure documentation within code files (comments and docstrings)."""
+    metrics = {
+        'files': 0,
+        'lines': 0
+    }
+    
+    # Keep track of processed files
+    processed_files = set()
+    
+    # Look for modernized implementation files
+    for root, _, files in os.walk('.'):
+        for file in files:
+            if (file.startswith('modernized_') or 'modernized' in file) and file.endswith(('.cpp', '.h')):
+                file_path = os.path.join(root, file)
+                
+                try:
+                    with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+                        content = f.read()
+                        has_documentation = False
+                        
+                        # Count documentation comments (/** ... */ style and /* ... */ style)
+                        doc_comments = re.findall(r'/\*\*(.*?)\*/', content, re.DOTALL)
+                        doc_comments.extend(re.findall(r'/\*(.*?)\*/', content, re.DOTALL))
+                        
+                        # If we found documentation comments, count this file
+                        if doc_comments:
+                            has_documentation = True
+                            # Count lines in documentation comments
+                            for comment in doc_comments:
+                                lines = comment.count('\n') + 1
+                                metrics['lines'] += lines
+                                
+                        # Also check for line comments that document functions
+                        line_comments = re.findall(r'//\s*.*\n', content)
+                        if line_comments:
+                            has_documentation = True
+                            # Count lines in line comments
+                            for comment in line_comments:
+                                metrics['lines'] += 1
+                        
+                        # Only count the file once if it has documentation
+                        if has_documentation and file_path not in processed_files:
+                            metrics['files'] += 1
+                            processed_files.add(file_path)
+                            
+                except Exception as e:
+                    print(f"Error analyzing code documentation in {file_path}: {e}")
+    
+    return metrics
 
 def analyze_file(file_path):
     """Analyze a single file for all metrics."""
@@ -254,9 +312,15 @@ def main():
         print(f"Modernization documentation lines: {doc_metrics['modernization_doc_lines']}")
         print(f"Template documentation files: {doc_metrics['template_doc_files']}")
         print(f"Template documentation lines: {doc_metrics['template_doc_lines']}")
+        print(f"Code documentation files: {doc_metrics['code_doc_files']}")
+        print(f"Code documentation lines: {doc_metrics['code_doc_lines']}")
     
     if args.file:
         metrics = analyze_file(args.file)
+        if metrics is None:
+            print(f"Error: Could not analyze file {args.file}")
+            return
+            
         if doc_metrics:
             metrics['documentation_metrics'] = doc_metrics
         print(json.dumps(metrics, indent=2))
@@ -300,6 +364,8 @@ def main():
             print(f"  Modernization documentation lines: {doc_metrics['modernization_doc_lines']}")
             print(f"  Template documentation files: {doc_metrics['template_doc_files']}")
             print(f"  Template documentation lines: {doc_metrics['template_doc_lines']}")
+            print(f"  Code documentation files: {doc_metrics['code_doc_files']}")
+            print(f"  Code documentation lines: {doc_metrics['code_doc_lines']}")
 
 if __name__ == "__main__":
     main() 
