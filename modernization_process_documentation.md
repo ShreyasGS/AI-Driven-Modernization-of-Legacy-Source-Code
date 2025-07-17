@@ -130,6 +130,9 @@ We implemented modernized versions of key methods in nsSelection.cpp:
 1. **Manual Reference Counting → Smart Pointers**
    - [GetRangeAt Implementation](modernized_nsSelection_GetRangeAt.cpp)
    - Replaced manual AddRef/Release with nsCOMPtr and forget()
+   - [FetchFocusNode Implementation](modernized_nsSelection_FetchFocusNode.cpp)
+   - [FetchStartParent Implementation](modernized_nsSelection_FetchStartParent.cpp)
+   - Used nsCOMPtr for automatic reference counting
 
 2. **Error Code Returns → Result Types**
    - [Result Type Implementation](modernized_nsSelection_Result.h)
@@ -137,6 +140,9 @@ We implemented modernized versions of key methods in nsSelection.cpp:
    - [AddItem Implementation](modernized_nsSelection_AddItem.cpp)
    - [RemoveItem Implementation](modernized_nsSelection_RemoveItem.cpp)
    - [Clear Implementation](modernized_nsSelection_Clear.cpp)
+   - [FetchFocusOffset Implementation](modernized_nsSelection_FetchFocusOffset.cpp)
+   - [FetchStartOffset Implementation](modernized_nsSelection_FetchStartOffset.cpp)
+   - Replaced error codes with Result<T> return types
 
 3. **C-style Casts → Safe Casts**
    - [CurrentItem Implementation](modernized_nsSelection_CurrentItem.cpp)
@@ -197,12 +203,18 @@ We developed tools to measure our KPIs:
 
 Our latest measurements show:
 
-- Methods Modernized: 7 out of 112 (6.2%)
-- Original Pattern Occurrences: 483
-- Modernized Pattern Implementations: 69
-- Cyclomatic Complexity: 1047
-- Average Function Length: 23.5 lines
+- Methods Modernized: 12 out of 112 (10.7%)
+- Original Pattern Occurrences: 482
+- Modernized Pattern Implementations: 85
+- Cyclomatic Complexity: 1049
+- Average Function Length: 23.3 lines
 - Comment Ratio: 0.15
+
+Recent modernization efforts have focused on methods related to DOM node and range management:
+- FetchFocusNode
+- FetchFocusOffset
+- FetchStartParent
+- FetchStartOffset
 
 ## Phase 5: Lessons Learned and Next Steps
 
