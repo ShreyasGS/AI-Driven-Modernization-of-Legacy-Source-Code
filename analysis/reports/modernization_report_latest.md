@@ -1,5 +1,7 @@
 # Mozilla 1.0 Modernization KPI Report
-Generated on: 2025-07-17 16:40:25
+Generated on: 2025-07-17 16:56:27
+
+For detailed explanations of these metrics, see [Documentation Metrics Guide](../documentation_metrics_guide.md).
 
 ## Code Quality Metrics
 - Cyclomatic Complexity: 1049
@@ -19,12 +21,11 @@ Generated on: 2025-07-17 16:40:25
 - Optional Type Usage: 3
 
 ## Documentation Metrics
-For detailed explanations of these metrics, see [Documentation Metrics Guide](../documentation_metrics_guide.md).
 
-- Total Documentation Files: 54
-- Total Documentation Lines: 7179
-- Modernization Documentation Files: 36
-- Modernization Documentation Lines: 3951
+- Total Documentation Files: 55
+- Total Documentation Lines: 7302
+- Modernization Documentation Files: 37
+- Modernization Documentation Lines: 4011
 - Template Documentation Files: 6
 - Template Documentation Lines: 1285
 - Code Documentation Files: 12

@@ -30,6 +30,8 @@ def generate_text_report(kpi_data, progress_data=None, output_file=None):
     report.append("# Mozilla 1.0 Modernization KPI Report")
     report.append(f"Generated on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     report.append("")
+    report.append("For detailed explanations of these metrics, see [Documentation Metrics Guide](../documentation_metrics_guide.md).")
+    report.append("")
     
     report.append("## Code Quality Metrics")
     report.append(f"- Cyclomatic Complexity: {cyclomatic_complexity}")
@@ -47,7 +49,6 @@ def generate_text_report(kpi_data, progress_data=None, output_file=None):
     # Add documentation metrics if available
     if doc_metrics:
         report.append("## Documentation Metrics")
-        report.append("For detailed explanations of these metrics, see [Documentation Metrics Guide](../documentation_metrics_guide.md).")
         report.append("")
         report.append(f"- Total Documentation Files: {doc_metrics.get('doc_files', 0)}")
         report.append(f"- Total Documentation Lines: {doc_metrics.get('doc_lines', 0)}")
