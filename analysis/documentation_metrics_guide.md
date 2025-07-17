@@ -28,6 +28,34 @@ Source code files (primarily .cpp and .h files) that contain significant documen
 ### 8. Code Documentation Lines
 The total number of lines of documentation comments within source code files, including both block comments (/* */) and line comments (//).
 
+## Code Pattern Distribution Metrics
+
+The KPI reports also track several code pattern metrics that show our progress in modernizing the codebase:
+
+### 1. Result Type Usage
+The number of occurrences of the `Result<T>` pattern in the codebase. This pattern replaces error code returns with a type that can represent either a successful result or an error code, making error handling more explicit and type-safe.
+
+### 2. Optional Type Usage
+The number of occurrences of the `std::optional<T>` pattern. This pattern replaces null pointers and special values with a type that explicitly represents the possibility of a missing value.
+
+### 3. Smart Pointer Usage
+The number of occurrences of smart pointers (`nsCOMPtr`, `RefPtr`, `std::unique_ptr`, `std::shared_ptr`) in the codebase. These replace manual memory management with automatic resource cleanup.
+
+### 4. Manual Reference Counting
+The number of occurrences of manual reference counting (`AddRef`, `Release`) calls. These are targets for replacement with smart pointers.
+
+### 5. Error Code Returns
+The number of occurrences of error code returns (`return NS_*`). These are targets for replacement with the Result pattern.
+
+### 6. C Style Casts
+The number of occurrences of C-style casts. These are targets for replacement with safer C++ casts.
+
+### 7. Out Parameters
+The number of occurrences of out parameters (parameters passed by pointer to receive a value). These are targets for replacement with return values or std::optional.
+
+### 8. Null Checks
+The number of occurrences of null checks. These are targets for replacement with std::optional or other safer patterns.
+
 ## Importance of Documentation Metrics
 
 These metrics help us track our documentation coverage and ensure that we're properly documenting our modernization efforts at all levels - from high-level plans to specific implementation details in the code itself.

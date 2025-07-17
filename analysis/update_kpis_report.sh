@@ -33,6 +33,13 @@ MODERNIZATION_DOC_LINES=$(echo "$DOC_METRICS" | grep -o "'modernization_doc_line
 
 echo "Template documentation metrics: $TEMPLATE_DOC_FILES files, $TEMPLATE_DOC_LINES lines"
 
+# Get pattern metrics for Result and Optional types
+PATTERN_METRICS=$(cd .. && python3 -c "import sys; sys.path.append('.'); from analysis.measure_modernization_kpis import analyze_directory; summary, _ = analyze_directory('.'); print(summary['pattern_totals'])")
+RESULT_TYPE_USAGE=$(echo "$PATTERN_METRICS" | grep -o "'result_type_usage': [0-9]*" | grep -o "[0-9]*")
+OPTIONAL_TYPE_USAGE=$(echo "$PATTERN_METRICS" | grep -o "'optional_type_usage': [0-9]*" | grep -o "[0-9]*")
+
+echo "Pattern metrics: Result Type Usage: $RESULT_TYPE_USAGE, Optional Type Usage: $OPTIONAL_TYPE_USAGE"
+
 # Check if original file exists
 if [ ! -f "${ORIGINAL_FILE}" ]; then
     echo "Warning: Original file ${ORIGINAL_FILE} not found."
@@ -53,9 +60,9 @@ if [ ! -f "${ORIGINAL_FILE}" ]; then
     "c_style_casts": 12,
     "out_parameters": 86,
     "null_checks": 3,
-    "result_type_usage": 0,
+    "result_type_usage": ${RESULT_TYPE_USAGE},
     "smart_pointer_usage": 243,
-    "optional_type_usage": 0
+    "optional_type_usage": ${OPTIONAL_TYPE_USAGE}
   },
   "documentation_metrics": {
     "doc_files": ${DOC_FILES},
@@ -82,7 +89,9 @@ else
         .documentation_metrics.doc_files = ${DOC_FILES} |
         .documentation_metrics.doc_lines = ${DOC_LINES} |
         .documentation_metrics.modernization_doc_files = ${MODERNIZATION_DOC_FILES} |
-        .documentation_metrics.modernization_doc_lines = ${MODERNIZATION_DOC_LINES}" "${KPI_FILE}" > "${TMP_FILE}"
+        .documentation_metrics.modernization_doc_lines = ${MODERNIZATION_DOC_LINES} |
+        .patterns.result_type_usage = ${RESULT_TYPE_USAGE} |
+        .patterns.optional_type_usage = ${OPTIONAL_TYPE_USAGE}" "${KPI_FILE}" > "${TMP_FILE}"
     mv "${TMP_FILE}" "${KPI_FILE}"
 fi
 

@@ -37,7 +37,7 @@ PATTERNS = {
         'description': 'Null Checks'
     },
     'result_type_usage': {
-        'pattern': r'Result<\w+>',
+        'pattern': r'(?:mozilla::)?Result\s*<\s*\w+(?:::\w+)*\s*>',
         'description': 'Result Type Usage'
     },
     'smart_pointer_usage': {
@@ -45,7 +45,7 @@ PATTERNS = {
         'description': 'Smart Pointer Usage'
     },
     'optional_type_usage': {
-        'pattern': r'std::optional',
+        'pattern': r'std::optional\s*<\s*\w+(?:::\w+)*\s*>',
         'description': 'Optional Type Usage'
     }
 }
@@ -256,6 +256,15 @@ def find_cpp_files(directory):
                 cpp_files.append(os.path.join(root, file))
     return cpp_files
 
+def find_modernized_files(directory):
+    """Find all modernized implementation files."""
+    modernized_files = []
+    for root, _, files in os.walk(directory):
+        for file in files:
+            if (file.startswith('modernized_') or 'modernized' in file) and file.endswith(('.cpp', '.h')):
+                modernized_files.append(os.path.join(root, file))
+    return modernized_files
+
 def analyze_directory(directory, output_file=None):
     """Analyze all C/C++ files in a directory."""
     cpp_files = find_cpp_files(directory)
@@ -273,6 +282,34 @@ def analyze_directory(directory, output_file=None):
             results.append(metrics)
             for pattern_name, count in metrics['patterns'].items():
                 pattern_totals[pattern_name] += count
+    
+    # Specifically analyze modernized files for Result and Optional types
+    modernized_files = find_modernized_files(directory)
+    print(f"Found {len(modernized_files)} modernized files to analyze.")
+    
+    modernized_pattern_totals = {
+        'result_type_usage': 0,
+        'optional_type_usage': 0
+    }
+    
+    for file_path in modernized_files:
+        try:
+            with open(file_path, 'r', encoding='utf-8', errors='ignore') as file:
+                content = file.read()
+                
+                # Count Result type usage
+                result_matches = re.findall(PATTERNS['result_type_usage']['pattern'], content)
+                modernized_pattern_totals['result_type_usage'] += len(result_matches)
+                
+                # Count Optional type usage
+                optional_matches = re.findall(PATTERNS['optional_type_usage']['pattern'], content)
+                modernized_pattern_totals['optional_type_usage'] += len(optional_matches)
+        except Exception as e:
+            print(f"Error analyzing modernized file {file_path}: {e}")
+    
+    # Add modernized pattern counts to the totals
+    pattern_totals['result_type_usage'] = modernized_pattern_totals['result_type_usage']
+    pattern_totals['optional_type_usage'] = modernized_pattern_totals['optional_type_usage']
     
     # Calculate summary statistics
     summary = {
