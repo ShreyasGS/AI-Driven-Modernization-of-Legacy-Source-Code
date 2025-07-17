@@ -47,6 +47,8 @@ def generate_text_report(kpi_data, progress_data=None, output_file=None):
     # Add documentation metrics if available
     if doc_metrics:
         report.append("## Documentation Metrics")
+        report.append("For detailed explanations of these metrics, see [Documentation Metrics Guide](../documentation_metrics_guide.md).")
+        report.append("")
         report.append(f"- Total Documentation Files: {doc_metrics.get('doc_files', 0)}")
         report.append(f"- Total Documentation Lines: {doc_metrics.get('doc_lines', 0)}")
         report.append(f"- Modernization Documentation Files: {doc_metrics.get('modernization_doc_files', 0)}")
