@@ -29,7 +29,7 @@ The Mozilla 1.0 Codebase Modernization project aims to transform legacy C/C++ co
 ### Implementation
 
 - Selected nsSelection.cpp as pilot file (1,204 modernization opportunities)
-- Successfully modernized 7 methods (6.2% of total methods):
+- Successfully modernized 12 methods (10.7% of total methods):
   - GetRangeAt
   - GetPresContext
   - GetAnchorNode
@@ -38,25 +38,33 @@ The Mozilla 1.0 Codebase Modernization project aims to transform legacy C/C++ co
   - Clear
   - CurrentItem
   - FetchDesiredX
+  - FetchFocusNode
+  - FetchFocusOffset
+  - FetchStartParent
+  - FetchStartOffset
 - Created compatibility wrappers to maintain backward compatibility
 - Developed comprehensive documentation of the modernization process
 
 ## Key Metrics
 
 ### Code Quality Metrics
-- Cyclomatic Complexity: 1047
-- Average Function Length: 23.5 lines
+- Cyclomatic Complexity: 1049
+- Average Function Length: 23.3 lines
 - Comment-to-Code Ratio: 0.15
 
 ### Pattern Reduction
-- Original Pattern Occurrences: 483
-- Modernized Pattern Implementations: 69 (14.3% reduction)
+- Original Pattern Occurrences: 482
+- Modernized Pattern Implementations: 92 (19.1% reduction)
 
 ### Documentation Metrics
-- Total Documentation Files: 29
-- Total Documentation Lines: 5,152
-- Modernization Documentation Files: 16
+- Total Documentation Files: 55
+- Total Documentation Lines: 7,302
+- Modernization Documentation Files: 37
+- Modernization Documentation Lines: 4,011
 - Template Documentation Files: 6
+- Template Documentation Lines: 1,285
+- Code Documentation Files: 12
+- Code Documentation Lines: 1,020
 
 ## Benefits Realized
 
