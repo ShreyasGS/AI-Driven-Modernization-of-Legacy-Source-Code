@@ -36,9 +36,9 @@ To gain deeper insights into the codebase, we created tools to index and analyze
 
 We ran our analysis tools on the codebase to establish baseline measurements:
 
-- Total Files: 1,933
-- Files with Modernization Opportunities: 1,569 (81.2%)
-- Total Lines of Code: 1,245,689
+- Total Files: 10,467
+- Files with Modernization Opportunities: 8,499 (81.2%)
+- Total Lines of Code: ~200,000
 
 The most common patterns identified were:
 

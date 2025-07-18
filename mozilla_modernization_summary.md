@@ -40,8 +40,7 @@ We've established a comprehensive KPI measurement system:
 1. **KPI Definition**: Created nsSelection_modernization_kpis.md to define our metrics
 2. **Measurement Scripts**: Developed Python scripts to measure code quality and modernization metrics
 3. **Progress Tracking**: Created tools to track modernization progress over time
-4. **Dashboard**: Built an HTML dashboard to visualize our progress
-5. **Automation**: Created a shell script to automate KPI measurement and dashboard generation
+4. **Automation**: Created a shell script to automate KPI measurement and report generation
 
 ### 4. Documentation
 
