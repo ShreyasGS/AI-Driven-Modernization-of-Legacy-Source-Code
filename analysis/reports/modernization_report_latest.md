@@ -1,7 +1,7 @@
 # Mozilla 1.0 Modernization KPI Report
 Generated on: 2025-07-17 16:56:27
 
-> **Note:** The Code Quality Metrics and Code Pattern Distribution in this report are specific to nsSelection.cpp (our pilot implementation file) only, not the entire Mozilla codebase. The Documentation Metrics section covers documentation files across the entire project.
+> **Note:** The Code Quality Metrics, Code Pattern Distribution, Modernization Progress, and Pattern Reduction metrics in this report are specific to nsSelection.cpp (our pilot implementation file) only, not the entire Mozilla codebase. The Documentation Metrics section covers documentation files across the entire project.
 
 For detailed explanations of these metrics, see [Documentation Metrics Guide](../documentation_metrics_guide.md).
 
