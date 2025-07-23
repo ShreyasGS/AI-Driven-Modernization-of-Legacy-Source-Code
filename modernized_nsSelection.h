@@ -11,6 +11,9 @@
 using mozilla::Result;
 using mozilla::Ok;
 using mozilla::Err;
+using mozilla::Maybe;
+using mozilla::Some;
+using mozilla::Nothing;
 
 // Forward declarations
 class nsTypedSelection;
@@ -62,6 +65,25 @@ Result<nsCOMPtr<nsIDOMNode>, nsresult> FetchStartParentModern(nsTypedSelection* 
  *                    - On failure: nsresult error code
  */
 Result<PRInt32, nsresult> FetchStartOffsetModern(nsTypedSelection* aSelection, nsIDOMRange* aRange);
+
+/**
+ * FetchAnchorParentModern - Gets the parent node of the anchor node
+ *
+ * @param aSelection  The selection object to query
+ * @return            Result containing either the parent node or an error code
+ *                    - On success: nsCOMPtr<nsIDOMNode> with the parent node (may be nullptr)
+ *                    - On failure: nsresult error code
+ */
+Result<nsCOMPtr<nsIDOMNode>, nsresult> FetchAnchorParentModern(nsTypedSelection* aSelection);
+
+/**
+ * FetchAnchorOffsetModern - Gets the offset of the anchor node
+ *
+ * @param aSelection  The selection object to query
+ * @return            Maybe<int32_t> containing the offset if anchor node exists,
+ *                    or Nothing() if no anchor node exists
+ */
+Maybe<int32_t> FetchAnchorOffsetModern(nsTypedSelection* aSelection);
 
 /**
  * GetRangeAtModern - Gets the range at the specified index in the selection

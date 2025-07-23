@@ -49,9 +49,9 @@ Replace methods that use out parameters with methods that return values directly
 - Combine with Result<T> pattern for error handling
 
 ### 5. Null Checks → Optional Types
-Replace null checks with std::optional or similar:
+Replace null checks with Maybe<T> or std::optional:
 
-- Use std::optional for optional values
+- Use Maybe<T> for optional values
 - Use Result<T> for operations that might fail
 
 ## Implementation Plan
@@ -76,6 +76,42 @@ Replace null checks with std::optional or similar:
    - Focus on improving null safety
    - Ensure proper error handling
 
+## Current Progress
+
+### Modernized Methods (14 of 112, 12.5%)
+
+#### Manual Reference Counting → Smart Pointers
+- GetRangeAt: Replaced manual AddRef/Release with nsCOMPtr and forget()
+- FetchFocusNode: Used nsCOMPtr for automatic reference counting
+- FetchStartParent: Used nsCOMPtr for parent node management
+- FetchAnchorParent: Used nsCOMPtr for parent node management
+
+#### Error Code Returns → Result Types
+- GetPresContext: Replaced nsresult with Result<nsCOMPtr<nsIPresContext>>
+- AddItem: Replaced nsresult with Result<void>
+- RemoveItem: Replaced nsresult with Result<void>
+- Clear: Replaced nsresult with Result<void>
+- FetchFocusOffset: Replaced nsresult with Result<PRInt32>
+- FetchStartOffset: Replaced nsresult with Result<PRInt32>
+
+#### C-style Casts → Safe Casts
+- CurrentItem: Replaced NS_STATIC_CAST with static_cast
+
+#### Out Parameters → Return Values
+- GetAnchorNode: Replaced out parameter with direct return value
+
+#### Null Checks → Optional Types
+- FetchDesiredX: Used Result<nscoord> for potential null/error cases
+- FetchAnchorOffset: Used Maybe<int32_t> for optional value
+
+### Next Methods to Modernize
+
+1. GetRangeCount: Replace out parameter with direct return value
+2. GetIsCollapsed: Replace out parameter with direct return value
+3. Collapse: Replace error code with Result<void>
+4. Extend: Replace error code with Result<void>
+5. SelectAllChildren: Replace error code with Result<void>
+
 ## Testing Strategy
 - Unit tests for each modernized method
 - Integration tests for the selection system
@@ -84,4 +120,10 @@ Replace null checks with std::optional or similar:
 ## Compatibility Considerations
 - Maintain backward compatibility with existing code
 - Provide adapter functions where necessary
-- Document changes thoroughly 
+- Document changes thoroughly
+
+## Lessons Learned
+1. **Wrapper Pattern Success**: The pattern of creating modernized implementations with backward compatibility wrappers has proven effective.
+2. **Documentation Importance**: Comprehensive documentation of modernized methods helps maintain consistency.
+3. **Type Safety Benefits**: Modern C++ type safety features have helped catch potential issues during implementation.
+4. **Incremental Approach**: Modernizing method by method allows for steady progress while managing complexity. 

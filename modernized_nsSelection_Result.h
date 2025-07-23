@@ -26,6 +26,9 @@ public:
   // Check if the Result represents success
   bool isOk() const { return mIsOk; }
 
+  // Check if the Result represents failure
+  bool isErr() const { return !mIsOk; }
+
   // Get the value (only call if isOk() is true)
   const T& unwrap() const {
     NS_ASSERTION(mIsOk, "Trying to unwrap a failed Result");
@@ -69,6 +72,9 @@ public:
   // Check if the Result represents success
   bool isOk() const { return mIsOk; }
 
+  // Check if the Result represents failure
+  bool isErr() const { return !mIsOk; }
+
   // Get the error code (only call if isOk() is false)
   nsresult unwrapErr() const {
     NS_ASSERTION(!mIsOk, "Trying to unwrapErr a successful Result");
@@ -84,6 +90,83 @@ private:
   nsresult mErrorCode;
   bool mIsOk;
 };
+
+/**
+ * Maybe<T> is a type that represents an optional value of type T.
+ * It's similar to C++17's std::optional, Rust's Option, or Haskell's Maybe.
+ *
+ * This implementation is simplified for demonstration purposes.
+ */
+template<typename T>
+class Maybe {
+public:
+  // Construct an empty Maybe
+  Maybe() : mHasValue(false) {}
+
+  // Construct a Maybe with a value
+  explicit Maybe(const T& aValue) : mValue(aValue), mHasValue(true) {}
+  explicit Maybe(T&& aValue) : mValue(std::move(aValue)), mHasValue(true) {}
+
+  // Check if the Maybe has a value
+  bool isSome() const { return mHasValue; }
+
+  // Check if the Maybe is empty
+  bool isNothing() const { return !mHasValue; }
+
+  // Get the value (only call if isSome() is true)
+  const T& value() const {
+    NS_ASSERTION(mHasValue, "Trying to get the value of an empty Maybe");
+    return mValue;
+  }
+
+  T& value() {
+    NS_ASSERTION(mHasValue, "Trying to get the value of an empty Maybe");
+    return mValue;
+  }
+
+  // Get the value or a default
+  T valueOr(const T& aDefault) const {
+    return mHasValue ? mValue : aDefault;
+  }
+
+private:
+  union {
+    T mValue;
+    char mDummy;  // To make the union valid when mHasValue is false
+  };
+  bool mHasValue;
+};
+
+// Helper functions to create Maybe values
+template<typename T>
+Maybe<typename std::decay<T>::type> Some(T&& aValue) {
+  return Maybe<typename std::decay<T>::type>(std::forward<T>(aValue));
+}
+
+template<typename T>
+Maybe<T> Nothing() {
+  return Maybe<T>();
+}
+
+// Helper functions to create Result values
+template<typename T>
+Result<T> Ok(T&& aValue) {
+  return Result<T>(std::forward<T>(aValue));
+}
+
+template<typename T>
+Result<T> Err(nsresult aErrorCode) {
+  return Result<T>(aErrorCode);
+}
+
+// Specialization for void
+inline Result<void> Ok() {
+  return Result<void>();
+}
+
+inline Result<void> Err(nsresult aErrorCode) {
+  return Result<void>(aErrorCode);
+}
 
 } // namespace mozilla
 

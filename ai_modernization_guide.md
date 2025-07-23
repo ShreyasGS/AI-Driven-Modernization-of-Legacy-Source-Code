@@ -38,6 +38,7 @@ Create a document (`nsSelection_modernization_kpis.md`) that defines KPIs in the
 2. Modernization Coverage (tracking conversion of patterns)
 3. Pattern Reduction (counting reductions in problematic patterns)
 4. Documentation Metrics (measuring documentation improvements)
+5. Testing Metrics (measuring test coverage and pass rate)
 
 For each KPI, include:
 - A clear definition
@@ -60,6 +61,7 @@ Each template should include:
 - Step-by-step implementation instructions
 - Compatibility considerations
 - Benefits of the modernization
+- Testing considerations
 
 ## Phase 2: Implementation Infrastructure
 
@@ -147,9 +149,54 @@ After implementing several modernized methods, measure progress:
 3. Compare against the baseline
 4. Update documentation with the progress
 
-## Phase 4: Documentation and Reporting
+## Phase 4: Testing
 
-### Step 11: Document Modernization Process
+### Step 11: Create Testing Framework
+
+Create a testing framework to verify the correctness of modernized implementations:
+
+1. Create a minimal testing framework:
+   - Implement simplified versions of modernized types (Result<T>, Maybe<T>)
+   - Create basic assertion macros
+   - Implement test case organization and reporting
+
+2. Create mock implementations:
+   - Implement mock versions of XPCOM interfaces
+   - Create simplified versions of Mozilla types
+   - Enable testing in isolation from the rest of the codebase
+
+3. Implement tests for core modernization patterns:
+   - Test Result<T> pattern for error handling
+   - Test Maybe<T> pattern for optional values
+   - Test smart pointer patterns for memory management
+   - Test safe casting patterns
+
+4. Implement tests for modernized methods:
+   - Test both modernized implementations and compatibility wrappers
+   - Test various scenarios including edge cases
+   - Verify that modernized code maintains the same behavior as the original
+
+### Step 12: Automate Testing
+
+Create scripts to automate the testing process:
+
+1. Create a build system for tests:
+   - Implement Makefiles for compiling tests
+   - Handle dependencies and include paths
+
+2. Create a test runner:
+   - Run all tests and report results
+   - Generate test coverage reports
+   - Integrate with CI/CD pipeline
+
+3. Document the testing approach:
+   - Explain the testing strategy
+   - Provide examples of how to write tests
+   - Document best practices for testing modernized code
+
+## Phase 5: Documentation and Reporting
+
+### Step 13: Document Modernization Process
 
 Create comprehensive documentation of the modernization process that:
 
@@ -158,8 +205,9 @@ Create comprehensive documentation of the modernization process that:
 3. Documents the KPI measurement infrastructure
 4. Provides examples of modernized code
 5. Outlines lessons learned and best practices
+6. Documents the testing approach and results
 
-### Step 12: Document Next Steps
+### Step 14: Document Next Steps
 
 Based on the pilot implementation, document next steps for the modernization effort:
 
@@ -167,23 +215,25 @@ Based on the pilot implementation, document next steps for the modernization eff
 2. Refine the modernization templates based on lessons learned
 3. Plan for scaling the modernization effort
 4. Identify potential challenges and mitigation strategies
+5. Plan for expanding test coverage
 
-## Phase 5: Continuous Improvement
+## Phase 6: Continuous Improvement
 
-### Step 13: Refine KPI Measurement
+### Step 15: Refine KPI Measurement
 
-Enhance the KPI measurement infrastructure to include documentation metrics:
+Enhance the KPI measurement infrastructure to include documentation and testing metrics:
 
 1. Update the measure_modernization_kpis.py script to:
    - Count documentation files and lines
    - Track modernization documentation
    - Measure template documentation
+   - Track test coverage and pass rate
 
-2. Update the generate_kpi_report.py script to include documentation metrics in the reports
+2. Update the generate_kpi_report.py script to include documentation and testing metrics in the reports
 
 3. Update the update_kpis_report.sh script to include the new metrics
 
-### Step 14: Update Documentation
+### Step 16: Update Documentation
 
 Update the modernization process documentation to reflect progress and lessons learned:
 
@@ -192,6 +242,7 @@ Update the modernization process documentation to reflect progress and lessons l
    - Include lessons learned from the pilot implementation
    - Reflect the current state of the project
    - Outline next steps
+   - Document testing results and insights
 
 ## Complete Implementation Example
 
@@ -261,6 +312,63 @@ This example demonstrates several modernization patterns:
 3. Using static_cast instead of C-style casts
 4. Providing a compatibility wrapper for backward compatibility
 
+### Test Implementation:
+```c
+// Test GetRangeAtModern with valid index
+bool test_get_range_at_modern_valid_index() {
+    // Setup
+    nsSelection selection;
+    // ... setup test data ...
+    
+    // Call the modernized method
+    auto result = selection.GetRangeAtModern(0);
+    
+    // Verify
+    ASSERT_TRUE(result.isOk());
+    ASSERT_FALSE(result.isErr());
+    ASSERT_NOT_NULL(result.unwrap());
+    
+    return true;
+}
+
+// Test GetRangeAtModern with invalid index
+bool test_get_range_at_modern_invalid_index() {
+    // Setup
+    nsSelection selection;
+    // ... setup test data ...
+    
+    // Call the modernized method
+    auto result = selection.GetRangeAtModern(-1);
+    
+    // Verify
+    ASSERT_FALSE(result.isOk());
+    ASSERT_TRUE(result.isErr());
+    ASSERT_EQUAL(NS_ERROR_INVALID_ARG, result.unwrapErr());
+    
+    return true;
+}
+
+// Test compatibility wrapper
+bool test_get_range_at_compatibility() {
+    // Setup
+    nsSelection selection;
+    // ... setup test data ...
+    nsIDOMRange* range = nullptr;
+    
+    // Call the original method
+    nsresult rv = selection.GetRangeAt(0, &range);
+    
+    // Verify
+    ASSERT_EQUAL(NS_OK, rv);
+    ASSERT_NOT_NULL(range);
+    
+    // Clean up
+    range->Release();
+    
+    return true;
+}
+```
+
 ## Conclusion
 
 This approach to modernizing the Mozilla 1.0 codebase involves:
@@ -269,7 +377,8 @@ This approach to modernizing the Mozilla 1.0 codebase involves:
 2. Establishing KPIs to measure progress
 3. Creating modernization templates for common patterns
 4. Implementing modernized versions of key methods
-5. Measuring progress against established KPIs
-6. Documenting the process and lessons learned
+5. Creating tests to verify correctness
+6. Measuring progress against established KPIs
+7. Documenting the process and lessons learned
 
-This approach allows for incremental modernization while maintaining compatibility with the existing codebase. 
+This approach allows for incremental modernization while maintaining compatibility with the existing codebase and ensuring correctness through comprehensive testing. 

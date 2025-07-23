@@ -1,0 +1,22 @@
+CC = gcc
+CFLAGS = -Wall
+
+# Define the target
+TARGET = minimal_test
+
+# Default target
+all: $(TARGET)
+
+# Link the target
+$(TARGET): minimal_test.c
+	$(CC) $(CFLAGS) -o $@ $<
+
+# Run the tests
+run: $(TARGET)
+	./$(TARGET)
+
+# Clean up
+clean:
+	rm -f $(TARGET)
+
+.PHONY: all run clean 

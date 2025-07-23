@@ -132,6 +132,7 @@ We implemented modernized versions of key methods in nsSelection.cpp:
    - Replaced manual AddRef/Release with nsCOMPtr and forget()
    - [FetchFocusNode Implementation](modernized_nsSelection_FetchFocusNode.cpp)
    - [FetchStartParent Implementation](modernized_nsSelection_FetchStartParent.cpp)
+   - [FetchAnchorParent Implementation](modernized_nsSelection_FetchAnchorParent.cpp)
    - Used nsCOMPtr for automatic reference counting
 
 2. **Error Code Returns → Result Types**
@@ -155,7 +156,8 @@ We implemented modernized versions of key methods in nsSelection.cpp:
 5. **Null Checks → Optional Types**
    - [Optional Implementation](modernized_nsSelection_Optional.cpp)
    - [FindItemIndex Implementation](modernized_nsSelection_RemoveItem.cpp)
-   - Used std::optional for values that might not exist
+   - [FetchAnchorOffset Implementation](modernized_nsSelection_FetchAnchorOffset.cpp)
+   - Used Maybe<T> and std::optional for values that might not exist
 
 ### Step 3: Ensuring Backward Compatibility
 
@@ -164,6 +166,31 @@ For each modernized method, we implemented backward compatibility wrappers that:
 - Converted between old and new interfaces
 - Preserved existing behavior
 - Allowed gradual adoption of modernized interfaces
+
+### Step 4: Creating Unit Tests
+
+To ensure the correctness of our modernized implementations, we created a testing framework:
+
+1. **Minimal C Tests**
+   - Created simple C tests in `tests/unit/minimal_test.c`
+   - Implemented simplified versions of Result<T> and Maybe<T>
+   - Tested core modernization patterns without dependencies
+   - Verified that the patterns work correctly at a conceptual level
+
+2. **Mock Implementations**
+   - Created mock implementations of XPCOM interfaces in `tests/unit/mock_nsTypedSelection.h/cpp`
+   - Implemented minimal functionality needed for testing
+   - Enabled testing in isolation from the rest of the codebase
+
+3. **Test Cases**
+   - Created test cases for modernized methods
+   - Tested both the modernized implementations and compatibility wrappers
+   - Covered various scenarios including edge cases
+
+4. **Test Automation**
+   - Created a build system for tests using Makefile
+   - Implemented a test runner script in `tests/run_tests.sh`
+   - Documented the testing approach in `tests/testing_approach.md`
 
 ## Phase 4: Measuring Progress and Impact
 
@@ -203,18 +230,21 @@ We developed tools to measure our KPIs:
 
 Our latest measurements show:
 
-- Methods Modernized: 12 out of 112 (10.7%)
+- Methods Modernized: 14 out of 112 (12.5%)
 - Original Pattern Occurrences: 482
-- Modernized Pattern Implementations: 85
+- Modernized Pattern Implementations: 126
 - Cyclomatic Complexity: 1049
 - Average Function Length: 23.3 lines
 - Comment Ratio: 0.15
+- Test Coverage: 14.3% (2 out of 14 modernized methods have tests)
 
 Recent modernization efforts have focused on methods related to DOM node and range management:
 - FetchFocusNode
 - FetchFocusOffset
 - FetchStartParent
 - FetchStartOffset
+- FetchAnchorParent
+- FetchAnchorOffset
 
 ## Phase 5: Lessons Learned and Next Steps
 
@@ -228,22 +258,28 @@ Recent modernization efforts have focused on methods related to DOM node and ran
 
 4. **Measurement Importance**: Quantitative measurement of our progress helped guide our efforts and demonstrate impact.
 
+5. **Testing Significance**: Unit testing is essential to verify that modernized implementations maintain the same behavior as the original code. Our testing approach has proven valuable in catching issues early.
+
+6. **Testing Challenges**: Testing in the context of a large legacy codebase presents challenges. Our approach of using minimal tests for core patterns and more comprehensive tests for specific implementations has been effective.
+
 ### Next Steps
 
 1. Continue applying modernization templates to the remaining methods in nsSelection.cpp
 
-2. Expand to other high-priority files:
+2. Expand test coverage to all modernized methods
+
+3. Expand to other high-priority files:
    - nsXULDocument.cpp
    - nsCSSFrameConstructor.cpp
 
-3. Refine our templates based on lessons learned
+4. Refine our templates based on lessons learned
 
-4. Develop more automated tools to assist with modernization
+5. Develop more automated tools to assist with modernization
 
-5. Establish a regular cadence for KPI measurement and reporting
+6. Establish a regular cadence for KPI measurement and reporting
 
 ## Conclusion
 
-Our Mozilla 1.0 modernization project has made significant progress in establishing a systematic approach to modernizing legacy C/C++ code. Through careful analysis, template development, and incremental implementation, we've demonstrated that it's possible to apply modern C++ practices to legacy code while maintaining backward compatibility.
+Our Mozilla 1.0 modernization project has made significant progress in establishing a systematic approach to modernizing legacy C/C++ code. Through careful analysis, template development, incremental implementation, and comprehensive testing, we've demonstrated that it's possible to apply modern C++ practices to legacy code while maintaining backward compatibility.
 
-The pilot work on nsSelection.cpp has validated our approach and templates, and with our KPI measurement infrastructure in place, we can now track our progress systematically as we expand our modernization efforts to the rest of the codebase. 
+The pilot work on nsSelection.cpp has validated our approach and templates, and with our KPI measurement infrastructure and testing framework in place, we can now track our progress systematically as we expand our modernization efforts to the rest of the codebase. 

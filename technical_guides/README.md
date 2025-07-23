@@ -21,6 +21,11 @@ This directory contains comprehensive technical guides for modernizing the Mozil
    - When to use each casting operator
    - Performance considerations
 
+4. [**Maybe Type Guide**](maybe_type_guide.md)
+   - Using Maybe<T> for optional values
+   - Replacing null checks with type-safe alternatives
+   - Combining Maybe<T> with Result<T>
+
 ### Additional Resources
 
 - [Modernization Templates](../modernization_templates/README.md)
@@ -50,7 +55,7 @@ To contribute to these guides:
 
 We plan to add the following guides in the future:
 
-1. **Optional<T> Pattern Guide**: Using Optional<T> instead of null pointers
-2. **Modern Error Handling Guide**: Beyond Result<T> to comprehensive error handling
-3. **RAII Pattern Guide**: Resource management with constructors and destructors
-4. **Modern Iteration Guide**: Using iterators and range-based loops 
+1. **Modern Error Handling Guide**: Beyond Result<T> to comprehensive error handling
+2. **RAII Pattern Guide**: Resource management with constructors and destructors
+3. **Modern Iteration Guide**: Using iterators and range-based loops
+4. **Template Metaprogramming Guide**: Using templates for compile-time safety and optimization 
